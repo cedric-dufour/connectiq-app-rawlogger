@@ -1,0 +1,106 @@
+<!-- -*- mode:xml; tab-width:2; c-basic-offset:2; intent-tabs-mode:nil; -*- ex: set tabstop=2 expandtab: -->
+<strings>
+  <string id="AppName">RawLogger</string>
+  <string id="AppVersion">1.0.20180830</string>
+
+  <!-- About -->
+  <string id="titleVersion">Version</string>
+  <string id="titleLicense">License</string>
+  <string id="titleAuthor">Author</string>
+  
+  <!-- Menu (settings) -->
+  <string id="menuSettings">Settings</string>
+  <string id="menuSettingsAbout">About</string>
+
+  <!-- Labels and Units -->
+
+  <!-- ... generic -->
+  <string id="labelPosition">Position</string>
+  <string id="labelSensor">Sensor</string>
+  <string id="labelActivity">Activity</string>
+  <string id="labelLocation">Location</string>
+  <string id="labelAltitude">Altitude</string>
+  <string id="labelSpeed">Speed</string>
+  <string id="labelHeading">Heading</string>
+  <string id="labelAccuracy">Accuracy</string>
+  <string id="labelPressure">Pressure</string>
+  <string id="labelAcceleration">Acceleration</string>
+  <string id="labelMagnetometer">Magnetometer</string>
+  <string id="labelHeartrate">Heartrate</string>
+  <string id="labelCadence">Cadence</string>
+  <string id="labelPower">Power</string>
+  <string id="labelTemperature">Temperature</string>
+  <string id="labelTime">Time</string>
+  <string id="unitTime">LT</string>
+
+  <!-- ... position inputs -->
+  <string id="labelPositionLocation">Pos.Location</string>
+  <string id="labelPositionLatitude">Pos.Latitude</string>
+  <string id="labelPositionLongitude">Pos.Longitude</string>
+  <string id="unitPositionLocation">°</string>
+  <string id="labelPositionAltitude">Pos.Altitude</string>
+  <string id="unitPositionAltitude">m</string>
+  <string id="labelPositionSpeed">Pos.Speed</string>
+  <string id="unitPositionSpeed">m/s</string>
+  <string id="labelPositionHeading">Pos.Heading</string>
+  <string id="unitPositionHeading">rad</string>
+  <string id="labelPositionAccuracy">Pos.Accuracy</string>
+  <string id="unitPositionAccuracy">-</string>
+
+  <!-- ... sensor inputs -->
+  <string id="labelSensorAltitude">Sens.Altitude</string>
+  <string id="unitSensorAltitude">m</string>
+  <string id="labelSensorSpeed">Sens.Speed</string>
+  <string id="unitSensorSpeed">m/s</string>
+  <string id="labelSensorHeading">Sens.Heading</string>
+  <string id="unitSensorHeading">rad</string>
+  <string id="labelSensorPressure">Sens.Pressure</string>
+  <string id="unitSensorPressure">Pa</string>
+  <string id="labelSensorAcceleration">Sens.Acceleration</string>
+  <string id="labelSensorAccelerationX">Sens.Acceleration (X)</string>
+  <string id="labelSensorAccelerationY">Sens.Acceleration (Y)</string>
+  <string id="labelSensorAccelerationZ">Sens.Acceleration (Z)</string>
+  <string id="unitSensorAcceleration">mgn</string> <!-- 9.80665 mm/s² -->
+  <string id="labelSensorMagnetometer">Sens.Magnetometer</string>
+  <string id="labelSensorMagnetometerX">Sens.Magnetometer (X)</string>
+  <string id="labelSensorMagnetometerY">Sens.Magnetometer (Y)</string>
+  <string id="labelSensorMagnetometerZ">Sens.Magnetometer (Z)</string>
+  <string id="unitSensorMagnetometer">mG</string>
+  <string id="labelSensorHeartrate">Sens.Heartrate</string>
+  <string id="unitSensorHeartrate">bpm</string>
+  <string id="labelSensorCadence">Sens.Cadence</string>
+  <string id="unitSensorCadence">rpm</string>
+  <string id="labelSensorPower">Sens.Power</string>
+  <string id="unitSensorPower">W</string>
+  <string id="labelSensorTemperature">Sens.Temperature</string>
+  <string id="unitSensorTemperature">°C</string>
+  <!-- ... activity inputs -->
+  <string id="labelActivityLocation">Act.Location</string>
+  <string id="labelActivityLatitude">Act.Latitude</string>
+  <string id="labelActivityLongitude">Act.Longitude</string>
+  <string id="unitActivityLocation">°</string>
+  <string id="labelActivityAltitude">Act.Altitude</string>
+  <string id="unitActivityAltitude">m</string>
+  <string id="labelActivitySpeed">Act.Speed</string>
+  <string id="unitActivitySpeed">m/s</string>
+  <string id="labelActivityHeading">Act.Heading</string>
+  <string id="unitActivityHeading">rad</string>
+  <string id="labelActivityAccuracy">Act.Accuracy</string>
+  <string id="unitActivityAccuracy">-</string>
+  <string id="labelActivityPressure">Act.Pressure</string>
+  <string id="labelActivityPressureRaw">Act.Pressure (raw)</string>
+  <string id="labelActivityPressureAmbient">Act.Pressure (ambient)</string>
+  <string id="unitActivityPressure">Pa</string>
+  <string id="labelActivityHeartrate">Act.Heartrate</string>
+  <string id="unitActivityHeartrate">bpm</string>
+  <string id="labelActivityCadence">Act.Cadence</string>
+  <string id="unitActivityCadence">rpm</string>
+  <string id="labelActivityPower">Act.Power</string>
+  <string id="unitActivityPower">W</string>
+
+  <!-- Values -->
+  <string id="valueOn">On</string>
+  <string id="valueOff">Off</string>
+
+</strings>
+

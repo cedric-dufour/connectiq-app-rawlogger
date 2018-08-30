@@ -1,0 +1,8 @@
+# Ignore temporary/backup files
+*#
+*~
+semantic.cache
+
+# Ignore build output (binary) directory
+/bin
+

@@ -1,0 +1,14 @@
+<!-- -*- mode:xml; tab-width:2; c-basic-offset:2; intent-tabs-mode:nil; -*- ex: set tabstop=2 expandtab: -->
+<menu id="menuSettingsSensor" title="@Strings.labelSensor">
+  <menu-item id="menuSettingsAltitude" label="@Strings.labelAltitude" />
+  <menu-item id="menuSettingsSpeed" label="@Strings.labelSpeed" />
+  <menu-item id="menuSettingsHeading" label="@Strings.labelHeading" />
+  <menu-item id="menuSettingsPressure" label="@Strings.labelPressure" />
+  <menu-item id="menuSettingsAcceleration" label="@Strings.labelAcceleration" />
+  <menu-item id="menuSettingsMagnetometer" label="@Strings.labelMagnetometer" />
+  <menu-item id="menuSettingsHeartrate" label="@Strings.labelHeartrate" />
+  <menu-item id="menuSettingsCadence" label="@Strings.labelCadence" />
+  <menu-item id="menuSettingsPower" label="@Strings.labelPower" />
+  <menu-item id="menuSettingsTemperature" label="@Strings.labelTemperature" />
+</menu>
+

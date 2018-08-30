@@ -1,0 +1,145 @@
+RawLogger (Garmin ConnectIQ) App
+================================
+Build and installation instructions
+
+Please note these instructions are targeted towards *nix (Linux or Mac OS X)
+command-liners (CLI).
+
+If you are more comfortable with Windows or a Graphical User Interface (GUI),
+please refer to the Garmin ConnectID Programmer's Guide:
+
+  URL> https://developer.garmin.com/connect-iq/programmers-guide/
+
+
+Pre-Requesites
+--------------
+
+Download and install (decompress) the Garmin ConnectIQ SDK from Garmin website:
+
+  URL> https://developer.garmin.com/connect-iq/sdk/
+
+From here, we'll assume the SDK is located (decompressed) in:
+
+  PATH> /opt/connectiq-sdk-linux
+
+
+Get hold of RawLogger source code:
+
+  URL> https://github.com/cedric-dufour/connectiq-app-rawlogger
+
+
+If you haven't already done so, generate a ConnectIQ developer key:
+
+  CLI> UMASK=$(umask); umask 077  # you developer key is SECRET!
+
+  CLI> mkdir ~/.secret
+
+  CLI> openssl genrsa \
+        -out ~/.secret/GarminConnectIQ-developer-key.pem 4096
+
+  CLI> openssl pkcs8 -topk8 -nocrypt -inform PEM -outform DER \
+        -in  ~/.secret/GarminConnectIQ-developer-key.pem \
+        -out ~/.secret/GarminConnectIQ-developer-key.der 
+
+  CLI> umask ${UMASK}
+
+
+Build Environment
+-----------------
+
+We'll be using GNU make to build and install the project:
+
+  URL> https://www.gnu.org/software/make/
+
+
+The following environment variables are available for you to fine-tune the
+build environment:
+
+  CIQ_ROOT := /opt/connectiq-sdk-linux
+    Garmin ConnectIQ SDK installation folder
+
+  CIQ_MONKEYC := ${CIQ_ROOT}/bin/monkeyc
+    Monkey C compiler
+
+  CIQ_SIMULATOR := ${CIQ_ROOT}/bin/simulator
+    ConnectIQ simulator
+
+  CIQ_MONKEYDO := ${CIQ_ROOT}/bin/monkeydo
+    ConnectIQ simulation launcher
+
+  CIQ_SDK := 2.4.0
+    Target SDK version
+
+  CIQ_DEVICE := d2charlie
+    Target device
+
+  CIQ_DEVKEY := [no default]
+
+(please see the Makefile.ciq file for more details)
+
+
+A little help before getting started may be welcome:
+
+  CLI> make help
+
+
+Debug Build and Simulation
+--------------------------
+
+Build the project, including debug symbols:
+
+  SH> export CIQ_DEVKEY=~/.secret/GarminConnectIQ-developer-key.der
+
+  SH> make debug
+
+Launch the project in the device simulator:
+
+  SH> make run-debug
+
+
+Release Build and Installation
+------------------------------
+
+Build the project, excluding debug symbols:
+
+  SH> export CIQ_DEVKEY=~/.secret/GarminConnectIQ-developer-key.der
+
+  SH> make release
+
+Connect your device via USB (as USB storage) and install the application:
+
+  SH> export DESTDIR=/path/to/device  # NOT including /Garmin/Apps sub-path
+
+  SH> make install
+
+
+Alternate devices
+-----------------
+
+RawLogger is being developed primarily for and using a D2 Charlie device.
+
+However, you can readily build and install it on any "compatible" device
+(featuring ConnectIQ 2.1 and above), e.g. the Fenix 5X:
+
+  SH> export CIQ_DEVICE=fenix5x
+  SH> export CIQ_SDK=2.4.0
+
+
+Enjoy!
+------
+
+See the USAGE file for usage instructions.
+
+
+Quirks
+------
+
+On Debian 8 (Jessie), you will need the libjpeg8 package from Debian 7 (Wheezy)
+to be able to run the ConnectIQ simulator:
+
+  URL> https://packages.debian.org/wheezy/libjpeg8
+
+On Debian 9 (Stretch), you will also need the libpng12-0 package from Debian 8 (Jessie):
+
+  URL> https://packages.debian.org/jessie/libpng12-0
+

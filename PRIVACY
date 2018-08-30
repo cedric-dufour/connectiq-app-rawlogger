@@ -1,0 +1,19 @@
+RawLogger (Garmin ConnectIQ) App
+================================
+Privacy information
+
+RawLogger does not collect and transmit any data to any 3rd-party, save for the
+Activity files you record and upload to Garmin (Connect) when synchronizing
+your device.
+
+The permissions required by RawLogger are:
+ - "Sensor" permission:
+   for ConnectIQ.Sensor.Info data (elevation, pressure, acceleration, etc.)
+   and corresponding ConnectIQ.Activity.Info data
+ - "Positioning" permission:
+   for ConnectIQ.Position.Info data (location, elevation, speed, etc.)
+   and corresponding ConnectIQ.Activity.Info data
+ - "Fit" permission:
+   for recording your Activity (to FIT file)
+ - "FitContributor" permission:
+   to adding all (chosen) ConnectIQ.*.Info data to your Activity (FIT file)

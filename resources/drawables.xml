@@ -1,0 +1,4 @@
+<!-- -*- mode:xml; tab-width:2; c-basic-offset:2; intent-tabs-mode:nil; -*- ex: set tabstop=2 expandtab: -->
+<drawables>
+  <bitmap id="AppIcon" filename="drawables/launcher_icon.png" />
+</drawables>

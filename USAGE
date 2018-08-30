@@ -1,0 +1,35 @@
+RawLogger (Garmin ConnectIQ) App
+================================
+Usage instructions
+
+
+Controls
+--------
+
+Use the devices buttons to:
+ - UP/DOWN: browse through enabled data (see Settings below)
+ - SELECT:  start/stop(save) the Activity recording (to FIT file)
+ - BACK:    add a Lap to the Activity (or exit the application)
+ - MENU:    enter the Settings menu (when *not* recording an Activity)
+
+
+Settings
+--------
+
+Enter the Settings by pressing the MENU button (long-pressing the UP button).
+
+The main menu is divide in three sub-menus:
+ - Position: ConnectIQ.Position.Info data fields (all)
+ - Sensor:   ConnectIQ.Sensor.Info data fields (all)
+ - Activity: ConnectIQ.Activity.Info data fields (current)
+(read the ConnectIQ developer documentation to learn about each data class)
+
+The enabled data fields will become browsable in the application (UP/DOWN
+buttons) and will be recorded to the FIT-file once the Activity is started
+(SELECT button).  
+Please note that only the first 16 data fields shall be recorded (as per
+FIT-file limitation).
+
+The Settings menu may *not* be entered while the Activity has been started
+is the FIT-file is being recorded.
+

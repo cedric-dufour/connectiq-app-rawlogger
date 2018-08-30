@@ -1,0 +1,26 @@
+RawLogger (Garmin ConnectIQ) App
+================================
+Copyright (C) 2018 Cedric Dufour <http://cedric.dufour.name>
+
+ConnectIQ Raw Logger (RawLogger) is free software:
+you can redistribute it and/or modify it under the terms of the GNU General
+Public License as published by the Free Software Foundation, Version 3.
+
+ConnectIQ Raw Logger (RawLogger) is distributed in the hope that it will be
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+See the GNU General Public License for more details.
+
+ConnectIQ Raw Logger (RawLogger) includes all resources which contain the
+following mention in their preamble: "ConnectIQ Raw Logger (RawLogger)"
+
+SPDX-License-Identifier: GPL-3.0
+License-Filename: LICENSE/GPL-3.0.txt
+
+
+3rd-party Material
+==================
+Other resources are (and must be) used according to their original license,
+which is (should be made) available from their respective author.
+

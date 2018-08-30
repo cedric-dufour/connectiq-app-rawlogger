@@ -1,0 +1,32 @@
+<!-- -*- mode:xml; tab-width:2; c-basic-offset:2; intent-tabs-mode:nil; -*- ex: set tabstop=2 expandtab: -->
+<properties>
+  <!-- User preferences -->
+  <!-- ... position inputs -->
+  <property id="userPositionLocation" type="boolean">false</property>
+  <property id="userPositionAltitude" type="boolean">false</property>
+  <property id="userPositionSpeed" type="boolean">false</property>
+  <property id="userPositionHeading" type="boolean">false</property>
+  <property id="userPositionAccuracy" type="boolean">false</property>
+  <!-- ... sensor inputs -->
+  <property id="userSensorAltitude" type="boolean">false</property>
+  <property id="userSensorSpeed" type="boolean">false</property>
+  <property id="userSensorHeading" type="boolean">false</property>
+  <property id="userSensorPressure" type="boolean">false</property>
+  <property id="userSensorAcceleration" type="boolean">false</property>
+  <property id="userSensorMagnetometer" type="boolean">false</property>
+  <property id="userSensorHeartrate" type="boolean">false</property>
+  <property id="userSensorCadence" type="boolean">false</property>
+  <property id="userSensorPower" type="boolean">false</property>
+  <property id="userSensorTemperature" type="boolean">false</property>
+  <!-- ... activity inputs -->
+  <property id="userActivityLocation" type="boolean">false</property>
+  <property id="userActivityAltitude" type="boolean">false</property>
+  <property id="userActivitySpeed" type="boolean">false</property>
+  <property id="userActivityHeading" type="boolean">false</property>
+  <property id="userActivityAccuracy" type="boolean">false</property>
+  <property id="userActivityPressure" type="boolean">false</property>
+  <property id="userActivityHeartrate" type="boolean">false</property>
+  <property id="userActivityCadence" type="boolean">false</property>
+  <property id="userActivityPower" type="boolean">false</property>
+</properties>
+
