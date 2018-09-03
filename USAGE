@@ -18,7 +18,7 @@ Settings
 
 Enter the Settings by pressing the MENU button (long-pressing the UP button).
 
-The main menu is divide in three sub-menus:
+The main menu is divided in three sub-menus:
  - Position: ConnectIQ.Position.Info data fields (all)
  - Sensor:   ConnectIQ.Sensor.Info data fields (all)
  - Activity: ConnectIQ.Activity.Info data fields (current)
@@ -31,5 +31,35 @@ Please note that only the first 16 data fields shall be recorded (as per
 FIT-file limitation).
 
 The Settings menu may *not* be entered while the Activity has been started
-is the FIT-file is being recorded.
+and the FIT-file is being recorded.
+
+
+Analyzing FIT files
+-------------------
+
+If only a few data fields are recorded in the FIT-file and only coarse analysis
+is needed, you may visualize the data directly in Garmin Connect (website or
+mobile), provided you downloaded RawLogger from the Garmin Store. Please note
+that Garmin apparently imposes a limit on the quantity of custom data fields
+that may be displayed in Garmin Connect (max. 3 at the time of writing).
+
+If you need to perform a detailed analysis of the data (or recorded more data
+fields tha Gamin Connect is willing to display), please use the FIT SDK:
+
+1. Download and install (unzip) the FIT SDK
+
+    https://www.thisisant.com/resources/fit/
+
+2. Retrieve the FIT-file directly from your device or download/unzip it from
+   Garmin Connect (Gear Icon -> Export Original)
+
+    https://connect.garmin.com/modern/activity/<activity-ID>
+
+3. Convert the FIT-file to CSV
+
+    java -jar /path/to/FIT-SDK/java/FitCSVTool.jar -b <acivity-ID>.fit <activity-ID>.csv --data record
+
+4. Open the CSV *data* file using LibreOffice Calc (or Microsoft Excel)
+
+    /path/to/LibreOffice/program/soffice <activity-ID>_data.csv
 
