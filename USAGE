@@ -22,7 +22,14 @@ The main menu is divided in three sub-menus:
  - Position: ConnectIQ.Position.Info data fields (all)
  - Sensor:   ConnectIQ.Sensor.Info data fields (all)
  - Activity: ConnectIQ.Activity.Info data fields (current)
-(read the ConnectIQ developer documentation to learn about each data class)
+
+Please read the ConnectIQ developer documentation to learn more about each
+data class:
+ - https://developer.garmin.com/downloads/connect-iq/monkey-c/doc/Toybox/Position/Info.html
+ - https://developer.garmin.com/downloads/connect-iq/monkey-c/doc/Toybox/Sensor/Info.html
+ - https://developer.garmin.com/downloads/connect-iq/monkey-c/doc/Toybox/Activity/Info.html
+As well as FIT-file "contributed" (custom) fields:
+ - https://developer.garmin.com/downloads/connect-iq/monkey-c/doc/Toybox/FitContributor/Field.html
 
 The enabled data fields will become browsable in the application (UP/DOWN
 buttons) and will be recorded to the FIT-file once the Activity is started
