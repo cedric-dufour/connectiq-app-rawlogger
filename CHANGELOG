@@ -1,3 +1,10 @@
+* 1.0.20180907a:
+  - Added "Analyzing FIT files" section to the USAGE file
+  - Added doumentation pointers to the USAGE file
+  - Devel: update default (d2charlie) CIQ target version to be compatible with SDK 3.0.2
+  - Included meanSeaLevelPressure in Activity's Pressure data fields
+  - Added System.Stats (battery and memory) data fields
+
 * 1.0.20180830a
   - Post Tenebras Lux
 
