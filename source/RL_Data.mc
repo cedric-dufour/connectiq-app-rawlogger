@@ -58,6 +58,7 @@ class RL_Data {
   public var iActivityAccuracy;
   public var fActivityPressureRaw;
   public var fActivityPressureAmbient;
+  public var fActivityPressureMean;
   public var iActivityHeartrate;
   public var iActivityCadence;
   public var iActivityPower;
@@ -241,6 +242,13 @@ class RL_Data {
     }
     else {
       self.fActivityPressureAmbient = null;
+    }
+    // ... pressure (mean)
+    if(_oInfo has :meanSeaLevelPressure and _oInfo.meanSeaLevelPressure != null) {
+      self.fActivityPressureMean = _oInfo.meanSeaLevelPressure;
+    }
+    else {
+      self.fActivityPressureMean = null;
     }
     // ... heartrate
     if(_oInfo has :currentHeartRate and _oInfo.currentHeartRate != null) {

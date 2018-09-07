@@ -69,6 +69,7 @@ var RL_oFitField_ActivityHeading = null;
 var RL_oFitField_ActivityAccuracy = null;
 var RL_oFitField_ActivityPressureRaw = null;
 var RL_oFitField_ActivityPressureAmbient = null;
+var RL_oFitField_ActivityPressureMean = null;
 var RL_oFitField_ActivityHeartrate = null;
 var RL_oFitField_ActivityCadence = null;
 var RL_oFitField_ActivityPower = null;
@@ -119,9 +120,10 @@ class RL_App extends App.AppBase {
   public const FITFIELD_ACTIVITYACCURACY = 306;
   public const FITFIELD_ACTIVITYPRESSURERAW = 307;
   public const FITFIELD_ACTIVITYPRESSUREAMBIENT = 308;
-  public const FITFIELD_ACTIVITYHEARTRATE = 309;
-  public const FITFIELD_ACTIVITYCADENCE = 310;
-  public const FITFIELD_ACTIVITYPOWER = 311;
+  public const FITFIELD_ACTIVITYPRESSUREMEAN = 309;
+  public const FITFIELD_ACTIVITYHEARTRATE = 310;
+  public const FITFIELD_ACTIVITYCADENCE = 311;
+  public const FITFIELD_ACTIVITYPOWER = 312;
 
 
   //
@@ -303,10 +305,11 @@ class RL_App extends App.AppBase {
         $.RL_oFitField_ActivityAccuracy = $.RL_oActivitySession.createField("ActivityAccuracy", RL_App.FITFIELD_ACTIVITYACCURACY, FitContributor.DATA_TYPE_UINT16, { :mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>Ui.loadResource(Rez.Strings.unitActivityAccuracy) });
         iFitFields -= 1;
       }
-      if($.RL_oSettings.bActivityPressure and iFitFields >= 2) {
+      if($.RL_oSettings.bActivityPressure and iFitFields >= 3) {
         $.RL_oFitField_ActivityPressureRaw = $.RL_oActivitySession.createField("ActivityPressureRaw", RL_App.FITFIELD_ACTIVITYPRESSURERAW, FitContributor.DATA_TYPE_FLOAT, { :mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>Ui.loadResource(Rez.Strings.unitActivityPressure) });
         $.RL_oFitField_ActivityPressureAmbient = $.RL_oActivitySession.createField("ActivityPressureAmbient", RL_App.FITFIELD_ACTIVITYPRESSUREAMBIENT, FitContributor.DATA_TYPE_FLOAT, { :mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>Ui.loadResource(Rez.Strings.unitActivityPressure) });
-        iFitFields -= 2;
+        $.RL_oFitField_ActivityPressureMean = $.RL_oActivitySession.createField("ActivityPressureMean", RL_App.FITFIELD_ACTIVITYPRESSUREMEAN, FitContributor.DATA_TYPE_FLOAT, { :mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>Ui.loadResource(Rez.Strings.unitActivityPressure) });
+        iFitFields -= 3;
       }
       if($.RL_oSettings.bActivityHeartrate and iFitFields >= 1) {
         $.RL_oFitField_ActivityHeartrate = $.RL_oActivitySession.createField("ActivityHeartrate", RL_App.FITFIELD_ACTIVITYHEARTRATE, FitContributor.DATA_TYPE_UINT16, { :mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>Ui.loadResource(Rez.Strings.unitActivityHeartrate) });
@@ -359,6 +362,7 @@ class RL_App extends App.AppBase {
     $.RL_oFitField_ActivityAccuracy = null;
     $.RL_oFitField_ActivityPressureRaw = null;
     $.RL_oFitField_ActivityPressureAmbient = null;
+    $.RL_oFitField_ActivityPressureMean = null;
     $.RL_oFitField_ActivityHeartrate = null;
     $.RL_oFitField_ActivityCadence = null;
     $.RL_oFitField_ActivityPower = null;
@@ -415,6 +419,9 @@ class RL_App extends App.AppBase {
     }
     if($.RL_oData.fActivityPressureAmbient != null and $.RL_oFitField_ActivityPressureAmbient != null) {
       $.RL_oFitField_ActivityPressureAmbient.setData($.RL_oData.fActivityPressureAmbient);
+    }
+    if($.RL_oData.fActivityPressureMean != null and $.RL_oFitField_ActivityPressureMean != null) {
+      $.RL_oFitField_ActivityPressureMean.setData($.RL_oData.fActivityPressureMean);
     }
     if($.RL_oData.iActivityHeartrate != null and $.RL_oFitField_ActivityHeartrate != null) {
       $.RL_oFitField_ActivityHeartrate.setData($.RL_oData.iActivityHeartrate);
@@ -505,6 +512,9 @@ class RL_App extends App.AppBase {
     }
     if($.RL_oData.fActivityPressureAmbient != null and $.RL_oFitField_ActivityPressureAmbient != null) {
       $.RL_oFitField_ActivityPressureAmbient.setData($.RL_oData.fActivityPressureAmbient);
+    }
+    if($.RL_oData.fActivityPressureMean != null and $.RL_oFitField_ActivityPressureMean != null) {
+      $.RL_oFitField_ActivityPressureMean.setData($.RL_oData.fActivityPressureMean);
     }
     if($.RL_oData.iActivityHeartrate != null and $.RL_oFitField_ActivityHeartrate != null) {
       $.RL_oFitField_ActivityHeartrate.setData($.RL_oData.iActivityHeartrate);

@@ -509,6 +509,8 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       sValue = $.RL_oData.fActivityPressureAmbient != null ? $.RL_oData.fActivityPressureAmbient.format("%.02f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue2Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
+      sValue = $.RL_oData.fActivityPressureMean != null ? $.RL_oData.fActivityPressureMean.format("%.02f") : self.NOVALUE_LEN3;
+      _oDC.drawText(self.iCenterX, self.iValue3Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 22) {  // ... activity: heartrate
       // ... label

@@ -90,6 +90,7 @@
   <string id="labelActivityPressure">Act.Pressure</string>
   <string id="labelActivityPressureRaw">Act.Pressure (raw)</string>
   <string id="labelActivityPressureAmbient">Act.Pressure (ambient)</string>
+  <string id="labelActivityPressureMean">Act.Pressure (mean)</string>
   <string id="unitActivityPressure">Pa</string>
   <string id="labelActivityHeartrate">Act.Heartrate</string>
   <string id="unitActivityHeartrate">bpm</string>
