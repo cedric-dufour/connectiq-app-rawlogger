@@ -38,6 +38,10 @@ var RL_oData = null;
 
 // Activity session (recording)
 var RL_oActivitySession = null;
+// ... system inputs
+var RL_oFitField_SystemBattery = null;
+var RL_oFitField_SystemMemoryUsed = null;
+var RL_oFitField_SystemMemoryFree = null;
 // ... position inputs
 var RL_oFitField_PositionLatitude = null;
 var RL_oFitField_PositionLongitude = null;
@@ -89,6 +93,10 @@ class RL_App extends App.AppBase {
   //
 
   // FIT fields (as per resources/fit.xml)
+  // ... system inputs
+  public const FITFIELD_SYSTEMBATTERY = 1;
+  public const FITFIELD_SYSTEMMEMORYUSED = 2;
+  public const FITFIELD_SYSTEMMEMORYFREE = 3;
   // ... position inputs
   public const FITFIELD_POSITIONLATITUDE = 101;
   public const FITFIELD_POSITIONLONGITUDE = 102;
@@ -214,6 +222,17 @@ class RL_App extends App.AppBase {
       $.RL_oActivitySession = ActivityRecording.createSession({ :name=>"RawLogger", :sport=>ActivityRecording.SPORT_GENERIC, :subSport=>ActivityRecording.SUB_SPORT_GENERIC });
       var iFitFields = 16;  // ... it would seem ConnectIQ allows only 16 contributed fit fields
 
+      // ... system inputs
+      if($.RL_oSettings.bSystemBattery and iFitFields >= 1) {
+        $.RL_oFitField_SystemBattery = $.RL_oActivitySession.createField("SystemBattery", RL_App.FITFIELD_SYSTEMBATTERY, FitContributor.DATA_TYPE_FLOAT, { :mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>Ui.loadResource(Rez.Strings.unitSystemBattery) });
+        iFitFields -= 1;
+      }
+      if($.RL_oSettings.bSystemMemory and iFitFields >= 2) {
+        $.RL_oFitField_SystemMemoryUsed = $.RL_oActivitySession.createField("SystemMemoryUsed", RL_App.FITFIELD_SYSTEMMEMORYUSED, FitContributor.DATA_TYPE_UINT32, { :mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>Ui.loadResource(Rez.Strings.unitSystemMemory) });
+        $.RL_oFitField_SystemMemoryFree = $.RL_oActivitySession.createField("SystemMemoryFree", RL_App.FITFIELD_SYSTEMMEMORYFREE, FitContributor.DATA_TYPE_UINT32, { :mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>Ui.loadResource(Rez.Strings.unitSystemMemory) });
+        iFitFields -= 2;
+      }
+
       // ... position inputs
       if($.RL_oSettings.bPositionLocation and iFitFields >= 2) {
         $.RL_oFitField_PositionLatitude = $.RL_oActivitySession.createField("PositionLatitude", RL_App.FITFIELD_POSITIONLATITUDE, FitContributor.DATA_TYPE_FLOAT, { :mesgType=>FitContributor.MESG_TYPE_RECORD, :units=>Ui.loadResource(Rez.Strings.unitPositionLocation) });
@@ -329,6 +348,11 @@ class RL_App extends App.AppBase {
   function resetActivity() {
     $.RL_oActivitySession = null;
 
+    // ... system inputs
+    $.RL_oFitField_SystemBattery = null;
+    $.RL_oFitField_SystemMemoryUsed = null;
+    $.RL_oFitField_SystemMemoryFree = null;
+
     // ... position inputs
     $.RL_oFitField_PositionLatitude = null;
     $.RL_oFitField_PositionLongitude = null;
@@ -370,12 +394,14 @@ class RL_App extends App.AppBase {
   
   function onLocationEvent(_oInfo) {
     //Sys.println("DEBUG: RL_App.onLocationEvent()");
-    $.RL_oData.storePositionInfo(_oInfo);
-    $.RL_oData.storeActivityInfo(Activity.getActivityInfo());
 
     // Save FIT fields
 
+    // ... system inputs
+    self.saveSystemStats();
+
     // ... position inputs
+    $.RL_oData.storePositionInfo(_oInfo);
     if($.RL_oData.fPositionLatitude != null and $.RL_oFitField_PositionLatitude != null) {
       $.RL_oFitField_PositionLatitude.setData($.RL_oData.fPositionLatitude);
     }
@@ -396,42 +422,7 @@ class RL_App extends App.AppBase {
     }
 
     // ... activity inputs
-    if($.RL_oData.fActivityLatitude != null and $.RL_oFitField_ActivityLatitude != null) {
-      $.RL_oFitField_ActivityLatitude.setData($.RL_oData.fActivityLatitude);
-    }
-    if($.RL_oData.fActivityLongitude != null and $.RL_oFitField_ActivityLongitude != null) {
-      $.RL_oFitField_ActivityLongitude.setData($.RL_oData.fActivityLongitude);
-    }
-    if($.RL_oData.fActivityAltitude != null and $.RL_oFitField_ActivityAltitude != null) {
-      $.RL_oFitField_ActivityAltitude.setData($.RL_oData.fActivityAltitude);
-    }
-    if($.RL_oData.fActivitySpeed != null and $.RL_oFitField_ActivitySpeed != null) {
-      $.RL_oFitField_ActivitySpeed.setData($.RL_oData.fActivitySpeed);
-    }
-    if($.RL_oData.fActivityHeading != null and $.RL_oFitField_ActivityHeading != null) {
-      $.RL_oFitField_ActivityHeading.setData($.RL_oData.fActivityHeading);
-    }
-    if($.RL_oData.iActivityAccuracy != null and $.RL_oFitField_ActivityAccuracy != null) {
-      $.RL_oFitField_ActivityAccuracy.setData($.RL_oData.iActivityAccuracy);
-    }
-    if($.RL_oData.fActivityPressureRaw != null and $.RL_oFitField_ActivityPressureRaw != null) {
-      $.RL_oFitField_ActivityPressureRaw.setData($.RL_oData.fActivityPressureRaw);
-    }
-    if($.RL_oData.fActivityPressureAmbient != null and $.RL_oFitField_ActivityPressureAmbient != null) {
-      $.RL_oFitField_ActivityPressureAmbient.setData($.RL_oData.fActivityPressureAmbient);
-    }
-    if($.RL_oData.fActivityPressureMean != null and $.RL_oFitField_ActivityPressureMean != null) {
-      $.RL_oFitField_ActivityPressureMean.setData($.RL_oData.fActivityPressureMean);
-    }
-    if($.RL_oData.iActivityHeartrate != null and $.RL_oFitField_ActivityHeartrate != null) {
-      $.RL_oFitField_ActivityHeartrate.setData($.RL_oData.iActivityHeartrate);
-    }
-    if($.RL_oData.iActivityCadence != null and $.RL_oFitField_ActivityCadence != null) {
-      $.RL_oFitField_ActivityCadence.setData($.RL_oData.iActivityCadence);
-    }
-    if($.RL_oData.iActivityPower != null and $.RL_oFitField_ActivityPower != null) {
-      $.RL_oFitField_ActivityPower.setData($.RL_oData.iActivityPower);
-    }
+    self.saveActivityInfo();
 
     // UI update
     self.updateUi();
@@ -439,12 +430,14 @@ class RL_App extends App.AppBase {
 
   function onSensorEvent(_oInfo) {
     //Sys.println("DEBUG: RL_App.onSensorEvent());
-    $.RL_oData.storeSensorInfo(_oInfo);
-    $.RL_oData.storeActivityInfo(Activity.getActivityInfo());
 
     // Save FIT fields
 
+    // ... system inputs
+    self.saveSystemStats();
+
     // ... sensor inputs
+    $.RL_oData.storeSensorInfo(_oInfo);
     if($.RL_oData.fSensorAltitude != null and $.RL_oFitField_SensorAltitude != null) {
       $.RL_oFitField_SensorAltitude.setData($.RL_oData.fSensorAltitude);
     }
@@ -489,6 +482,35 @@ class RL_App extends App.AppBase {
     }
 
     // ... activity inputs
+    self.saveActivityInfo();
+
+    // UI update
+    self.updateUi();
+  }
+
+  function saveSystemStats() {
+    //Sys.println("DEBUG: RL_App.saveSystemStats()");
+    $.RL_oData.storeSystemStats(Sys.getSystemStats());
+
+    // Save FIT fields
+    // ... system inputs
+    if($.RL_oData.fSystemBattery != null and $.RL_oFitField_SystemBattery != null) {
+      $.RL_oFitField_SystemBattery.setData($.RL_oData.fSystemBattery);
+    }
+    if($.RL_oData.iSystemMemoryUsed != null and $.RL_oFitField_SystemMemoryUsed != null) {
+      $.RL_oFitField_SystemMemoryUsed.setData($.RL_oData.iSystemMemoryUsed);
+    }
+    if($.RL_oData.iSystemMemoryFree != null and $.RL_oFitField_SystemMemoryFree != null) {
+      $.RL_oFitField_SystemMemoryFree.setData($.RL_oData.iSystemMemoryFree);
+    }
+  }
+
+  function saveActivityInfo() {
+    //Sys.println("DEBUG: RL_App.saveActivityInfo());
+    $.RL_oData.storeActivityInfo(Activity.getActivityInfo());
+
+    // Save FIT fields
+    // ... activity inputs
     if($.RL_oData.fActivityLatitude != null and $.RL_oFitField_ActivityLatitude != null) {
       $.RL_oFitField_ActivityLatitude.setData($.RL_oData.fActivityLatitude);
     }
@@ -525,9 +547,6 @@ class RL_App extends App.AppBase {
     if($.RL_oData.iActivityPower != null and $.RL_oFitField_ActivityPower != null) {
       $.RL_oFitField_ActivityPower.setData($.RL_oData.iActivityPower);
     }
-
-    // UI update
-    self.updateUi();
   }
 
   function onUpdateTimer_init() {

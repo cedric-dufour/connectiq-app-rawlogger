@@ -15,6 +15,9 @@
   <!-- Labels and Units -->
 
   <!-- ... generic -->
+  <string id="labelSystem">System</string>
+  <string id="labelBattery">Battery</string>
+  <string id="labelMemory">Memory</string>
   <string id="labelPosition">Position</string>
   <string id="labelSensor">Sensor</string>
   <string id="labelActivity">Activity</string>
@@ -32,6 +35,13 @@
   <string id="labelTemperature">Temperature</string>
   <string id="labelTime">Time</string>
   <string id="unitTime">LT</string>
+
+  <!-- ... system inputs -->
+  <string id="labelSystemBattery">Sys.Battery</string>
+  <string id="unitSystemBattery">%</string>
+  <string id="labelSystemMemoryUsed">Sys.Memory (used)</string>
+  <string id="labelSystemMemoryFree">Sys.Memory (free)</string>
+  <string id="unitSystemMemory">B</string>
 
   <!-- ... position inputs -->
   <string id="labelPositionLocation">Pos.Location</string>

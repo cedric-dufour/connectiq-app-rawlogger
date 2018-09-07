@@ -1,5 +1,30 @@
 <!-- -*- mode:xml; tab-width:2; c-basic-offset:2; intent-tabs-mode:nil; -*- ex: set tabstop=2 expandtab: -->
 <fitContributions>
+  <!-- ... system inputs -->
+  <fitField id="1"
+            displayInChart="true"
+            sortOrder="1"
+            precision="1"
+            chartTitle="@Strings.labelSystemBattery"
+            dataLabel="@Strings.labelSystemBattery"
+            unitLabel="@Strings.unitSystemBattery"
+            fillColor="#AAAAAA" />
+  <fitField id="2"
+            displayInChart="true"
+            sortOrder="2"
+            precision="0"
+            chartTitle="@Strings.labelSystemMemoryUsed"
+            dataLabel="@Strings.labelSystemMemoryUsed"
+            unitLabel="@Strings.unitSystemMemory"
+            fillColor="#AAAAAA" />
+  <fitField id="3"
+            displayInChart="true"
+            sortOrder="3"
+            precision="0"
+            chartTitle="@Strings.labelSystemMemoryFree"
+            dataLabel="@Strings.labelSystemMemoryFree"
+            unitLabel="@Strings.unitSystemMemory"
+            fillColor="#AAAAAA" />
   <!-- ... position inputs -->
   <fitField id="101"
             displayInChart="true"

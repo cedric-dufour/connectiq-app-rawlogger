@@ -1,6 +1,9 @@
 <!-- -*- mode:xml; tab-width:2; c-basic-offset:2; intent-tabs-mode:nil; -*- ex: set tabstop=2 expandtab: -->
 <properties>
   <!-- User preferences -->
+  <!-- ... system inputs -->
+  <property id="userSystemBattery" type="boolean">false</property>
+  <property id="userSystemMemory" type="boolean">false</property>
   <!-- ... position inputs -->
   <property id="userPositionLocation" type="boolean">false</property>
   <property id="userPositionAltitude" type="boolean">false</property>

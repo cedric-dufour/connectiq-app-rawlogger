@@ -13,8 +13,8 @@ RawLogger is as simple as it gets:
    the device or via Garmin Connect
 
 **No processing of the displayed/recorded data takes place what-so-ever.**  
-ConnectIQ Position, Sensor and/or Activity (Info) data are directly stored
-in the Activity/FIT-file for later analysis.
+ConnectIQ System (Stats), Position, Sensor and/or Activity (Info) data are
+directly stored in the Activity/FIT-file for later analysis.
 
 
 Build, Installation and Usage

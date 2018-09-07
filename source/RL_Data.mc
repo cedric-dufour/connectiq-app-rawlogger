@@ -27,6 +27,10 @@ class RL_Data {
   //
 
   // Inputs
+  // ... system
+  public var fSystemBattery;
+  public var iSystemMemoryUsed;
+  public var iSystemMemoryFree;
   // ... position
   public var fPositionLatitude;
   public var fPositionLongitude;
@@ -67,6 +71,30 @@ class RL_Data {
   //
   // FUNCTIONS: self
   //
+
+  function storeSystemStats(_oStats) {
+    // ... battery
+    if(_oStats has :battery and _oStats.battery != null) {
+      self.fSystemBattery = _oStats.battery;
+    }
+    else {
+      self.fSystemBattery = null;
+    }
+    // ... memory (used)
+    if(_oStats has :usedMemory and _oStats.usedMemory != null) {
+      self.iSystemMemoryUsed = _oStats.usedMemory;
+    }
+    else {
+      self.iSystemMemoryUsed = null;
+    }
+    // ... memory (free)
+    if(_oStats has :freeMemory and _oStats.freeMemory != null) {
+      self.iSystemMemoryFree = _oStats.freeMemory;
+    }
+    else {
+      self.iSystemMemoryFree = null;
+    }
+  }
 
   function storePositionInfo(_oInfo) {
     // ... position

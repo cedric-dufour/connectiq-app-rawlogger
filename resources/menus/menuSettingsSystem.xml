@@ -1,0 +1,6 @@
+<!-- -*- mode:xml; tab-width:2; c-basic-offset:2; intent-tabs-mode:nil; -*- ex: set tabstop=2 expandtab: -->
+<menu id="menuSettingsSystem" title="@Strings.labelSystem">
+  <menu-item id="menuSettingsBattery" label="@Strings.labelBattery" />
+  <menu-item id="menuSettingsMemory" label="@Strings.labelMemory" />
+</menu>
+

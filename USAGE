@@ -18,13 +18,15 @@ Settings
 
 Enter the Settings by pressing the MENU button (long-pressing the UP button).
 
-The main menu is divided in three sub-menus:
+The main menu is divided in four sub-menus:
+ - System:   ConnectIQ.System.Stats data fields (battery+memory)
  - Position: ConnectIQ.Position.Info data fields (all)
  - Sensor:   ConnectIQ.Sensor.Info data fields (all)
  - Activity: ConnectIQ.Activity.Info data fields (current)
 
 Please read the ConnectIQ developer documentation to learn more about each
 data class:
+ - https://developer.garmin.com/downloads/connect-iq/monkey-c/doc/Toybox/System/Stats.html
  - https://developer.garmin.com/downloads/connect-iq/monkey-c/doc/Toybox/Position/Info.html
  - https://developer.garmin.com/downloads/connect-iq/monkey-c/doc/Toybox/Sensor/Info.html
  - https://developer.garmin.com/downloads/connect-iq/monkey-c/doc/Toybox/Activity/Info.html

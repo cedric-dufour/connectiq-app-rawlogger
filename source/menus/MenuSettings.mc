@@ -32,7 +32,11 @@ class MenuDelegateSettings extends Ui.MenuInputDelegate {
   }
 
   function onMenuItem(item) {
-    if (item == :menuSettingsPosition) {
+    if (item == :menuSettingsSystem) {
+      //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsSystem)");
+      Ui.pushView(new Rez.Menus.menuSettingsSystem(), new MenuDelegateSettingsSystem(), Ui.SLIDE_IMMEDIATE);
+    }
+    else if (item == :menuSettingsPosition) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsPosition)");
       Ui.pushView(new Rez.Menus.menuSettingsPosition(), new MenuDelegateSettingsPosition(), Ui.SLIDE_IMMEDIATE);
     }

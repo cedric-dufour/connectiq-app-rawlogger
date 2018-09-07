@@ -29,6 +29,9 @@ class RL_Settings {
   //
 
   // Inputs
+  // ... system
+  public var bSystemBattery;
+  public var bSystemMemory;
   // ... position
   public var bPositionLocation;
   public var bPositionAltitude;
@@ -64,6 +67,9 @@ class RL_Settings {
 
   function load() {
     // Inputs
+    // ... system
+    self.bSystemBattery = App.Properties.getValue("userSystemBattery");
+    self.bSystemMemory = App.Properties.getValue("userSystemMemory");
     // ... position
     self.bPositionLocation = App.Properties.getValue("userPositionLocation");
     self.bPositionAltitude = App.Properties.getValue("userPositionAltitude");
