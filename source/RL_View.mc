@@ -28,7 +28,7 @@ using Toybox.WatchUi as Ui;
 // GLOBALS
 //
 
-// Current view index and label
+// Current view index and labels
 var RL_iViewIndex = 0;
 var RL_sViewLabel1 = null;
 var RL_sViewLabel2 = null;
