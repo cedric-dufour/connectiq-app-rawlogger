@@ -1,3 +1,6 @@
+* 1.0.20180922a:
+  - FIX: FIT fields IDs must be between 0 and 255 (bis)
+
 * 1.0.20180920a:
   - FIX: FIT fields IDs must be between 0 and 255
 
