@@ -171,7 +171,7 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fSystemBattery != null ? $.RL_oData.fSystemBattery.format("%.01f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fSystemBattery != null ? $.RL_oData.fSystemBattery.format("%.1f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 2) {  // ... system: memory
@@ -206,9 +206,9 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fPositionLatitude != null ? $.RL_oData.fPositionLatitude.format("%.06f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fPositionLatitude != null ? $.RL_oData.fPositionLatitude.format("%.6f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
-      sValue = $.RL_oData.fPositionLongitude != null ? $.RL_oData.fPositionLongitude.format("%.06f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fPositionLongitude != null ? $.RL_oData.fPositionLongitude.format("%.6f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue2Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 4) {  // ... position: altitude
@@ -224,7 +224,7 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fPositionAltitude != null ? $.RL_oData.fPositionAltitude.format("%.06f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fPositionAltitude != null ? $.RL_oData.fPositionAltitude.format("%.6f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 5) {  // ... position: speed
@@ -240,7 +240,7 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fPositionSpeed != null ? $.RL_oData.fPositionSpeed.format("%.06f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fPositionSpeed != null ? $.RL_oData.fPositionSpeed.format("%.6f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 6) {  // ... position: heading
@@ -256,7 +256,7 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fPositionHeading != null ? $.RL_oData.fPositionHeading.format("%.06f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fPositionHeading != null ? $.RL_oData.fPositionHeading.format("%.6f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 7) {  // ... position: accuracy
@@ -289,7 +289,7 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fSensorAltitude != null ? $.RL_oData.fSensorAltitude.format("%.06f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fSensorAltitude != null ? $.RL_oData.fSensorAltitude.format("%.6f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 9) {  // ... sensor: speed
@@ -305,7 +305,7 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fSensorSpeed != null ? $.RL_oData.fSensorSpeed.format("%.06f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fSensorSpeed != null ? $.RL_oData.fSensorSpeed.format("%.6f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 10) {  // ... sensor: heading
@@ -321,7 +321,7 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fSensorHeading != null ? $.RL_oData.fSensorHeading.format("%.06f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fSensorHeading != null ? $.RL_oData.fSensorHeading.format("%.6f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 11) {  // ... sensor: pressure
@@ -337,7 +337,7 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fSensorPressure != null ? $.RL_oData.fSensorPressure.format("%.02f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fSensorPressure != null ? $.RL_oData.fSensorPressure.format("%.2f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 12) {  // ... sensor: acceleration
@@ -441,7 +441,7 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fSensorTemperature != null ? $.RL_oData.fSensorTemperature.format("%.02f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fSensorTemperature != null ? $.RL_oData.fSensorTemperature.format("%.2f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
 
@@ -458,9 +458,9 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fActivityLatitude != null ? $.RL_oData.fActivityLatitude.format("%.06f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fActivityLatitude != null ? $.RL_oData.fActivityLatitude.format("%.6f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
-      sValue = $.RL_oData.fActivityLongitude != null ? $.RL_oData.fActivityLongitude.format("%.06f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fActivityLongitude != null ? $.RL_oData.fActivityLongitude.format("%.6f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue2Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 19) {  // ... activity: altitude
@@ -476,7 +476,7 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fActivityAltitude != null ? $.RL_oData.fActivityAltitude.format("%.06f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fActivityAltitude != null ? $.RL_oData.fActivityAltitude.format("%.6f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 20) {  // ... activity: speed
@@ -492,7 +492,7 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fActivitySpeed != null ? $.RL_oData.fActivitySpeed.format("%.06f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fActivitySpeed != null ? $.RL_oData.fActivitySpeed.format("%.6f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 21) {  // ... activity: heading
@@ -508,7 +508,7 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fActivityHeading != null ? $.RL_oData.fActivityHeading.format("%.06f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fActivityHeading != null ? $.RL_oData.fActivityHeading.format("%.6f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 22) {  // ... activity: accuracy
@@ -540,11 +540,11 @@ class RL_View extends Ui.View {
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.RL_sViewLabel2, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-      sValue = $.RL_oData.fActivityPressureRaw != null ? $.RL_oData.fActivityPressureRaw.format("%.02f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fActivityPressureRaw != null ? $.RL_oData.fActivityPressureRaw.format("%.2f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
-      sValue = $.RL_oData.fActivityPressureAmbient != null ? $.RL_oData.fActivityPressureAmbient.format("%.02f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fActivityPressureAmbient != null ? $.RL_oData.fActivityPressureAmbient.format("%.2f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue2Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
-      sValue = $.RL_oData.fActivityPressureMean != null ? $.RL_oData.fActivityPressureMean.format("%.02f") : self.NOVALUE_LEN3;
+      sValue = $.RL_oData.fActivityPressureMean != null ? $.RL_oData.fActivityPressureMean.format("%.2f") : self.NOVALUE_LEN3;
       _oDC.drawText(self.iCenterX, self.iValue3Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
     else if($.RL_iViewIndex == 24) {  // ... activity: heartrate
