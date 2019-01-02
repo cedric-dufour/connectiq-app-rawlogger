@@ -46,6 +46,9 @@ class RL_Data {
   public var iSensorAccelerationX;
   public var iSensorAccelerationY;
   public var iSensorAccelerationZ;
+  public var aiSensorAccelerationX_HD;
+  public var aiSensorAccelerationY_HD;
+  public var aiSensorAccelerationZ_HD;
   public var iSensorMagnetometerX;
   public var iSensorMagnetometerY;
   public var iSensorMagnetometerZ;
@@ -215,6 +218,20 @@ class RL_Data {
     }
     else {
       self.fSensorTemperature = null;
+    }
+  }
+
+  function storeSensorData(_oData) {
+    // ... acceleration
+    if(_oData has :accelerometerData and _oData.accelerometerData != null) {
+      self.aiSensorAccelerationX_HD = _oData.accelerometerData.x;
+      self.aiSensorAccelerationY_HD = _oData.accelerometerData.y;
+      self.aiSensorAccelerationZ_HD = _oData.accelerometerData.z;
+    }
+    else {
+      self.aiSensorAccelerationX_HD = null;
+      self.aiSensorAccelerationY_HD = null;
+      self.aiSensorAccelerationZ_HD = null;
     }
   }
 

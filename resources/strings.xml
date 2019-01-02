@@ -28,6 +28,7 @@
   <string id="labelAccuracy">Accuracy</string>
   <string id="labelPressure">Pressure</string>
   <string id="labelAcceleration">Acceleration</string>
+  <string id="labelAcceleration_HD">Acceleration (HD)</string>
   <string id="labelMagnetometer">Magnetometer</string>
   <string id="labelHeartrate">Heartrate</string>
   <string id="labelCadence">Cadence</string>
@@ -84,6 +85,7 @@
   <string id="unitSensorPower">W</string>
   <string id="labelSensorTemperature">Sens.Temperature</string>
   <string id="unitSensorTemperature">°C</string>
+
   <!-- ... activity inputs -->
   <string id="labelActivityLocation">Act.Location</string>
   <string id="labelActivityLatitude">Act.Latitude</string>

@@ -5,6 +5,7 @@
   <menu-item id="menuSettingsHeading" label="@Strings.labelHeading" />
   <menu-item id="menuSettingsPressure" label="@Strings.labelPressure" />
   <menu-item id="menuSettingsAcceleration" label="@Strings.labelAcceleration" />
+  <menu-item id="menuSettingsAcceleration_HD" label="@Strings.labelAcceleration_HD" />
   <menu-item id="menuSettingsMagnetometer" label="@Strings.labelMagnetometer" />
   <menu-item id="menuSettingsHeartrate" label="@Strings.labelHeartrate" />
   <menu-item id="menuSettingsCadence" label="@Strings.labelCadence" />

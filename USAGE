@@ -35,9 +35,15 @@ As well as FIT-file "contributed" (custom) fields:
 
 The enabled data fields will become browsable in the application (UP/DOWN
 buttons) and will be recorded to the FIT-file once the Activity is started
-(SELECT button).  
-Please note that only the first 16 data fields shall be recorded (as per
-FIT-file limitation).
+(SELECT button).
+
+High-definition (HD) data fields values will only become available once the
+Activity has been started.
+
+Please note that ConnectIQ enforces limits on FIT-files:
+ - max. 16 data fields
+ - max. 256 bytes accross all data fields
+Enabled data fields that trespass those limits will be ignored.
 
 The Settings menu may *not* be entered while the Activity has been started
 and the FIT-file is being recorded.
@@ -50,7 +56,7 @@ If only a few data fields are recorded in the FIT-file and only coarse analysis
 is needed, you may visualize the data directly in Garmin Connect (website or
 mobile), provided you downloaded RawLogger from the Garmin Store. Please note
 that Garmin apparently imposes a limit on the quantity of custom data fields
-that may be displayed in Garmin Connect (max. 3 at the time of writing).
+that may be displayed in Garmin Connect.
 
 If you need to perform a detailed analysis of the data (or recorded more data
 fields tha Gamin Connect is willing to display), please use the FIT SDK:

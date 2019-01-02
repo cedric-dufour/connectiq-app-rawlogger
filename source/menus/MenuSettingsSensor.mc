@@ -52,6 +52,10 @@ class MenuDelegateSettingsSensor extends Ui.MenuInputDelegate {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsAcceleration)");
       Ui.pushView(new PickerGenericOnOff("userSensorAcceleration", Ui.loadResource(Rez.Strings.labelAcceleration)), new PickerDelegateGenericOnOff("userSensorAcceleration"), Ui.SLIDE_IMMEDIATE);
     }
+    else if (item == :menuSettingsAcceleration_HD) {
+      //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsAcceleration_HD)");
+      Ui.pushView(new PickerGenericOnOff("userSensorAcceleration_HD", Ui.loadResource(Rez.Strings.labelAcceleration_HD)), new PickerDelegateGenericOnOff("userSensorAcceleration_HD"), Ui.SLIDE_IMMEDIATE);
+    }
     else if (item == :menuSettingsMagnetometer) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsMagnetometer)");
       Ui.pushView(new PickerGenericOnOff("userSensorMagnetometer", Ui.loadResource(Rez.Strings.labelMagnetometer)), new PickerDelegateGenericOnOff("userSensorMagnetometer"), Ui.SLIDE_IMMEDIATE);

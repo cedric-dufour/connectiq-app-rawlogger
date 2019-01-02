@@ -44,6 +44,7 @@ class RL_Settings {
   public var bSensorHeading;
   public var bSensorPressure;
   public var bSensorAcceleration;
+  public var bSensorAcceleration_HD;
   public var bSensorMagnetometer;
   public var bSensorHeartrate;
   public var bSensorCadence;
@@ -82,6 +83,7 @@ class RL_Settings {
     self.bSensorHeading = App.Properties.getValue("userSensorHeading");
     self.bSensorPressure = App.Properties.getValue("userSensorPressure");
     self.bSensorAcceleration = App.Properties.getValue("userSensorAcceleration");
+    self.bSensorAcceleration_HD = App.Properties.getValue("userSensorAcceleration_HD");
     self.bSensorMagnetometer = App.Properties.getValue("userSensorMagnetometer");
     self.bSensorHeartrate = App.Properties.getValue("userSensorHeartrate");
     self.bSensorCadence = App.Properties.getValue("userSensorCadence");

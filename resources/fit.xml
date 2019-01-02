@@ -189,6 +189,23 @@
             unitLabel="@Strings.unitSensorTemperature"
             fillColor="#AAAAAA" />
 
+  <!-- ... sensor inputs (high-definition) -->
+  <fitField id="131"
+            displayInChart="false"
+            sortOrder="131"
+            dataLabel="@Strings.labelSensorAccelerationX"
+            unitLabel="@Strings.unitSensorAcceleration" />
+  <fitField id="132"
+            displayInChart="false"
+            sortOrder="132"
+            dataLabel="@Strings.labelSensorAccelerationY"
+            unitLabel="@Strings.unitSensorAcceleration" />
+  <fitField id="133"
+            displayInChart="false"
+            sortOrder="133"
+            dataLabel="@Strings.labelSensorAccelerationZ"
+            unitLabel="@Strings.unitSensorAcceleration" />
+
   <!-- ... activity inputs -->
   <fitField id="151"
             displayInChart="true"
