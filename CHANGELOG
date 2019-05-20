@@ -1,5 +1,8 @@
+* 1.0.20190520a:
+  - NEW: Support MARQ serie, DescentMk1 and Forerunner 245/945
+
 * 1.0.20190102a:
-  - Added high-definition Sensor.Acceleration (HD) data field
+  - NEW: Added high-definition Sensor.Acceleration (HD) data field
 
 * 1.0.20180922a:
   - FIX: FIT fields IDs must be between 0 and 255 (bis)
