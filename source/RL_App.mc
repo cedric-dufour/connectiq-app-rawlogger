@@ -16,10 +16,11 @@
 // SPDX-License-Identifier: GPL-3.0
 // License-Filename: LICENSE/GPL-3.0.txt
 
+import Toybox.Lang;
 using Toybox.Activity;
 using Toybox.ActivityRecording;
 using Toybox.Application as App;
-using Toybox.FitContributor;
+using Toybox.FitContributor as Fit;
 using Toybox.Position;
 using Toybox.Sensor;
 using Toybox.System as Sys;
@@ -31,58 +32,58 @@ using Toybox.WatchUi as Ui;
 //
 
 // Application settings
-var RL_oSettings = null;
+var RL_oSettings as RL_Settings = new RL_Settings();
 
 // Application data
-var RL_oData = null;
+var RL_oData as RL_Data = new RL_Data();
 
 // Activity session (recording)
-var RL_oActivitySession = null;
+var RL_oActivitySession as ActivityRecording.Session? = null;
 // ... system inputs
-var RL_oFitField_SystemBattery = null;
-var RL_oFitField_SystemMemoryUsed = null;
-var RL_oFitField_SystemMemoryFree = null;
+var RL_oFitField_SystemBattery as Fit.Field? = null;
+var RL_oFitField_SystemMemoryUsed as Fit.Field? = null;
+var RL_oFitField_SystemMemoryFree as Fit.Field? = null;
 // ... position inputs
-var RL_oFitField_PositionLatitude = null;
-var RL_oFitField_PositionLongitude = null;
-var RL_oFitField_PositionAltitude = null;
-var RL_oFitField_PositionSpeed = null;
-var RL_oFitField_PositionHeading = null;
-var RL_oFitField_PositionAccuracy = null;
+var RL_oFitField_PositionLatitude as Fit.Field? = null;
+var RL_oFitField_PositionLongitude as Fit.Field? = null;
+var RL_oFitField_PositionAltitude as Fit.Field? = null;
+var RL_oFitField_PositionSpeed as Fit.Field? = null;
+var RL_oFitField_PositionHeading as Fit.Field? = null;
+var RL_oFitField_PositionAccuracy as Fit.Field? = null;
 // ... sensor inputs
-var RL_oFitField_SensorAltitude = null;
-var RL_oFitField_SensorSpeed = null;
-var RL_oFitField_SensorHeading = null;
-var RL_oFitField_SensorPressure = null;
-var RL_oFitField_SensorAccelerationX = null;
-var RL_oFitField_SensorAccelerationY = null;
-var RL_oFitField_SensorAccelerationZ = null;
-var RL_oFitField_SensorAccelerationX_HD = null;
-var RL_oFitField_SensorAccelerationY_HD = null;
-var RL_oFitField_SensorAccelerationZ_HD = null;
-var RL_oFitField_SensorMagnetometerX = null;
-var RL_oFitField_SensorMagnetometerY = null;
-var RL_oFitField_SensorMagnetometerZ = null;
-var RL_oFitField_SensorHeartrate = null;
-var RL_oFitField_SensorCadence = null;
-var RL_oFitField_SensorPower = null;
-var RL_oFitField_SensorTemperature = null;
+var RL_oFitField_SensorAltitude as Fit.Field? = null;
+var RL_oFitField_SensorSpeed as Fit.Field? = null;
+var RL_oFitField_SensorHeading as Fit.Field? = null;
+var RL_oFitField_SensorPressure as Fit.Field? = null;
+var RL_oFitField_SensorAccelerationX as Fit.Field? = null;
+var RL_oFitField_SensorAccelerationY as Fit.Field? = null;
+var RL_oFitField_SensorAccelerationZ as Fit.Field? = null;
+var RL_oFitField_SensorAccelerationX_HD as Fit.Field? = null;
+var RL_oFitField_SensorAccelerationY_HD as Fit.Field? = null;
+var RL_oFitField_SensorAccelerationZ_HD as Fit.Field? = null;
+var RL_oFitField_SensorMagnetometerX as Fit.Field? = null;
+var RL_oFitField_SensorMagnetometerY as Fit.Field? = null;
+var RL_oFitField_SensorMagnetometerZ as Fit.Field? = null;
+var RL_oFitField_SensorHeartrate as Fit.Field? = null;
+var RL_oFitField_SensorCadence as Fit.Field? = null;
+var RL_oFitField_SensorPower as Fit.Field? = null;
+var RL_oFitField_SensorTemperature as Fit.Field? = null;
 // ... activity inputs
-var RL_oFitField_ActivityLatitude = null;
-var RL_oFitField_ActivityLongitude = null;
-var RL_oFitField_ActivityAltitude = null;
-var RL_oFitField_ActivitySpeed = null;
-var RL_oFitField_ActivityHeading = null;
-var RL_oFitField_ActivityAccuracy = null;
-var RL_oFitField_ActivityPressureRaw = null;
-var RL_oFitField_ActivityPressureAmbient = null;
-var RL_oFitField_ActivityPressureMean = null;
-var RL_oFitField_ActivityHeartrate = null;
-var RL_oFitField_ActivityCadence = null;
-var RL_oFitField_ActivityPower = null;
+var RL_oFitField_ActivityLatitude as Fit.Field? = null;
+var RL_oFitField_ActivityLongitude as Fit.Field? = null;
+var RL_oFitField_ActivityAltitude as Fit.Field? = null;
+var RL_oFitField_ActivitySpeed as Fit.Field? = null;
+var RL_oFitField_ActivityHeading as Fit.Field? = null;
+var RL_oFitField_ActivityAccuracy as Fit.Field? = null;
+var RL_oFitField_ActivityPressureRaw as Fit.Field? = null;
+var RL_oFitField_ActivityPressureAmbient as Fit.Field? = null;
+var RL_oFitField_ActivityPressureMean as Fit.Field? = null;
+var RL_oFitField_ActivityHeartrate as Fit.Field? = null;
+var RL_oFitField_ActivityCadence as Fit.Field? = null;
+var RL_oFitField_ActivityPower as Fit.Field? = null;
 
 // Current view
-var RL_oCurrentView = null;
+var RL_oCurrentView as Ui.View? = null;
 
 
 //
@@ -149,7 +150,7 @@ class RL_App extends App.AppBase {
   //
 
   // Timers
-  private var oUpdateTimer;
+  private var oUpdateTimer as Timer.Timer?;
 
 
   //
@@ -158,10 +159,6 @@ class RL_App extends App.AppBase {
 
   function initialize() {
     AppBase.initialize();
-
-    // Application resources
-    $.RL_oSettings = new RL_Settings();
-    $.RL_oData = new RL_Data();
 
     // Timers
     // ... UI update
@@ -178,7 +175,7 @@ class RL_App extends App.AppBase {
     Position.enableLocationEvents(Position.LOCATION_CONTINUOUS, method(:onLocationEvent));
 
     // Enable sensor events
-    Sensor.setEnabledSensors([Sensor.SENSOR_BIKESPEED, Sensor.SENSOR_BIKECADENCE, Sensor.SENSOR_BIKEPOWER, Sensor.SENSOR_HEARTRATE, Sensor.SENSOR_TEMPERATURE]);
+    Sensor.setEnabledSensors([Sensor.SENSOR_BIKESPEED, Sensor.SENSOR_BIKECADENCE, Sensor.SENSOR_BIKEPOWER, Sensor.SENSOR_HEARTRATE, Sensor.SENSOR_TEMPERATURE] as Array<Sensor.SensorType>);
     Sensor.enableSensorEvents(method(:onSensorEvent));
 
     // Start UI update timer (every multiple of 5 seconds, to save energy)
@@ -186,10 +183,10 @@ class RL_App extends App.AppBase {
     self.oUpdateTimer = new Timer.Timer();
     var iUpdateTimerDelay = (60-Sys.getClockTime().sec)%5;
     if(iUpdateTimerDelay > 0) {
-      self.oUpdateTimer.start(method(:onUpdateTimer_init), 1000*iUpdateTimerDelay, false);
+      (self.oUpdateTimer as Timer.Timer).start(method(:onUpdateTimer_init), 1000*iUpdateTimerDelay, false);
     }
     else {
-      self.oUpdateTimer.start(method(:onUpdateTimer), 5000, true);
+      (self.oUpdateTimer as Timer.Timer).start(method(:onUpdateTimer), 5000, true);
     }
   }
 
@@ -199,21 +196,22 @@ class RL_App extends App.AppBase {
     // Stop timers
     // ... UI update
     if(self.oUpdateTimer != null) {
-      self.oUpdateTimer.stop();
+      (self.oUpdateTimer as Timer.Timer).stop();
       self.oUpdateTimer = null;
     }
 
     // Disable sensor events
+    Sensor.setEnabledSensors([] as Array<Sensor.SensorType>);
     Sensor.enableSensorEvents(null);
 
     // Disable position events
-    Position.enableLocationEvents(Position.LOCATION_DISABLE, null);
+    Position.enableLocationEvents(Position.LOCATION_DISABLE, method(:onLocationEvent));
   }
 
   function getInitialView() {
     //Sys.println("DEBUG: RL_App.getInitialView()");
 
-    return [new RL_View(), new RL_ViewDelegate()];
+    return [new RL_View(), new RL_ViewDelegate()] as Array<Ui.Views or Ui.InputDelegates>;
   }
 
   function onSettingsChanged() {
@@ -227,164 +225,164 @@ class RL_App extends App.AppBase {
   // FUNCTIONS: self
   //
 
-  function initActivity() {
+  function initActivity() as Void {
     if($.RL_oActivitySession == null) {
-      $.RL_oActivitySession = ActivityRecording.createSession({ :name => "RawLogger", :sport => ActivityRecording.SPORT_GENERIC, :subSport => ActivityRecording.SUB_SPORT_GENERIC });
+      var oActivitySession = ActivityRecording.createSession({ :name => "RawLogger", :sport => ActivityRecording.SPORT_GENERIC, :subSport => ActivityRecording.SUB_SPORT_GENERIC });
       var iFitFields = 16;  // ... it would seem ConnectIQ allows only 16 contributed FIT fields (undocumented)
       var iFitBytes = 256;  // ... FIT message can be no longer than 256 bytes
       var bHighDefListener_Acceleration = false;
 
       // ... system inputs
       if($.RL_oSettings.bSystemBattery and iFitFields >= 1 and iFitBytes >= 4) {
-        $.RL_oFitField_SystemBattery = $.RL_oActivitySession.createField("SystemBattery", RL_App.FITFIELD_SYSTEMBATTERY, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSystemBattery) });
+        $.RL_oFitField_SystemBattery = oActivitySession.createField("SystemBattery", RL_App.FITFIELD_SYSTEMBATTERY, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSystemBattery) as String });
         iFitFields -= 1;
         iFitBytes -= 4;
       }
       if($.RL_oSettings.bSystemMemory and iFitFields >= 2 and iFitBytes >= 8) {
-        $.RL_oFitField_SystemMemoryUsed = $.RL_oActivitySession.createField("SystemMemoryUsed", RL_App.FITFIELD_SYSTEMMEMORYUSED, FitContributor.DATA_TYPE_UINT32, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSystemMemory) });
-        $.RL_oFitField_SystemMemoryFree = $.RL_oActivitySession.createField("SystemMemoryFree", RL_App.FITFIELD_SYSTEMMEMORYFREE, FitContributor.DATA_TYPE_UINT32, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSystemMemory) });
+        $.RL_oFitField_SystemMemoryUsed = oActivitySession.createField("SystemMemoryUsed", RL_App.FITFIELD_SYSTEMMEMORYUSED, Fit.DATA_TYPE_UINT32, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSystemMemory) as String });
+        $.RL_oFitField_SystemMemoryFree = oActivitySession.createField("SystemMemoryFree", RL_App.FITFIELD_SYSTEMMEMORYFREE, Fit.DATA_TYPE_UINT32, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSystemMemory) as String });
         iFitFields -= 2;
         iFitBytes -= 8;
       }
 
       // ... position inputs
       if($.RL_oSettings.bPositionLocation and iFitFields >= 2 and iFitBytes >= 8) {
-        $.RL_oFitField_PositionLatitude = $.RL_oActivitySession.createField("PositionLatitude", RL_App.FITFIELD_POSITIONLATITUDE, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitPositionLocation) });
-        $.RL_oFitField_PositionLongitude = $.RL_oActivitySession.createField("PositionLongitude", RL_App.FITFIELD_POSITIONLONGITUDE, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitPositionLocation) });
+        $.RL_oFitField_PositionLatitude = oActivitySession.createField("PositionLatitude", RL_App.FITFIELD_POSITIONLATITUDE, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitPositionLocation) as String });
+        $.RL_oFitField_PositionLongitude = oActivitySession.createField("PositionLongitude", RL_App.FITFIELD_POSITIONLONGITUDE, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitPositionLocation) as String });
         iFitFields -= 2;
         iFitBytes -= 8;
       }
       if($.RL_oSettings.bPositionAltitude and iFitFields >= 1 and iFitBytes >= 4) {
-        $.RL_oFitField_PositionAltitude = $.RL_oActivitySession.createField("PositionAltitude", RL_App.FITFIELD_POSITIONALTITUDE, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitPositionAltitude) });
+        $.RL_oFitField_PositionAltitude = oActivitySession.createField("PositionAltitude", RL_App.FITFIELD_POSITIONALTITUDE, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitPositionAltitude) as String });
         iFitFields -= 1;
         iFitBytes -= 4;
       }
       if($.RL_oSettings.bPositionSpeed and iFitFields >= 1 and iFitBytes >= 4) {
-        $.RL_oFitField_PositionSpeed = $.RL_oActivitySession.createField("PositionSpeed", RL_App.FITFIELD_POSITIONSPEED, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitPositionSpeed) });
+        $.RL_oFitField_PositionSpeed = oActivitySession.createField("PositionSpeed", RL_App.FITFIELD_POSITIONSPEED, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitPositionSpeed) as String });
         iFitFields -= 1;
         iFitBytes -= 4;
       }
       if($.RL_oSettings.bPositionHeading and iFitFields >= 1 and iFitBytes >= 4) {
-        $.RL_oFitField_PositionHeading = $.RL_oActivitySession.createField("PositionHeading", RL_App.FITFIELD_POSITIONHEADING, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitPositionHeading) });
+        $.RL_oFitField_PositionHeading = oActivitySession.createField("PositionHeading", RL_App.FITFIELD_POSITIONHEADING, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitPositionHeading) as String });
         iFitFields -= 1;
         iFitBytes -= 4;
       }
       if($.RL_oSettings.bPositionAccuracy and iFitFields >= 1 and iFitBytes >= 1) {
-        $.RL_oFitField_PositionAccuracy = $.RL_oActivitySession.createField("PositionAccuracy", RL_App.FITFIELD_POSITIONACCURACY, FitContributor.DATA_TYPE_UINT8, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitPositionAccuracy) });
+        $.RL_oFitField_PositionAccuracy = oActivitySession.createField("PositionAccuracy", RL_App.FITFIELD_POSITIONACCURACY, Fit.DATA_TYPE_UINT8, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitPositionAccuracy) as String });
         iFitFields -= 1;
         iFitBytes -= 1;
       }
 
       // ... sensor inputs
       if($.RL_oSettings.bSensorAltitude and iFitFields >= 1 and iFitBytes >= 4) {
-        $.RL_oFitField_SensorAltitude = $.RL_oActivitySession.createField("SensorAltitude", RL_App.FITFIELD_SENSORALTITUDE, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorAltitude) });
+        $.RL_oFitField_SensorAltitude = oActivitySession.createField("SensorAltitude", RL_App.FITFIELD_SENSORALTITUDE, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorAltitude) as String });
         iFitFields -= 1;
         iFitBytes -= 4;
       }
       if($.RL_oSettings.bSensorSpeed and iFitFields >= 1 and iFitBytes >= 4) {
-        $.RL_oFitField_SensorSpeed = $.RL_oActivitySession.createField("SensorSpeed", RL_App.FITFIELD_SENSORSPEED, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorSpeed) });
+        $.RL_oFitField_SensorSpeed = oActivitySession.createField("SensorSpeed", RL_App.FITFIELD_SENSORSPEED, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorSpeed) as String });
         iFitFields -= 1;
         iFitBytes -= 4;
       }
       if($.RL_oSettings.bSensorHeading and iFitFields >= 1 and iFitBytes >= 4) {
-        $.RL_oFitField_SensorHeading = $.RL_oActivitySession.createField("SensorHeading", RL_App.FITFIELD_SENSORHEADING, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorHeading) });
+        $.RL_oFitField_SensorHeading = oActivitySession.createField("SensorHeading", RL_App.FITFIELD_SENSORHEADING, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorHeading) as String });
         iFitFields -= 1;
         iFitBytes -= 4;
       }
       if($.RL_oSettings.bSensorPressure and iFitFields >= 1 and iFitBytes >= 4) {
-        $.RL_oFitField_SensorPressure = $.RL_oActivitySession.createField("SensorPressure", RL_App.FITFIELD_SENSORPRESSURE, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorPressure) });
+        $.RL_oFitField_SensorPressure = oActivitySession.createField("SensorPressure", RL_App.FITFIELD_SENSORPRESSURE, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorPressure) as String });
         iFitFields -= 1;
         iFitBytes -= 4;
       }
       if($.RL_oSettings.bSensorAcceleration and iFitFields >= 3 and iFitBytes >= 6) {
-        $.RL_oFitField_SensorAccelerationX = $.RL_oActivitySession.createField("SensorAccelerationX", RL_App.FITFIELD_SENSORACCELERATIONX, FitContributor.DATA_TYPE_SINT16, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorAcceleration) });
-        $.RL_oFitField_SensorAccelerationY = $.RL_oActivitySession.createField("SensorAccelerationY", RL_App.FITFIELD_SENSORACCELERATIONY, FitContributor.DATA_TYPE_SINT16, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorAcceleration) });
-        $.RL_oFitField_SensorAccelerationZ = $.RL_oActivitySession.createField("SensorAccelerationZ", RL_App.FITFIELD_SENSORACCELERATIONZ, FitContributor.DATA_TYPE_SINT16, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorAcceleration) });
+        $.RL_oFitField_SensorAccelerationX = oActivitySession.createField("SensorAccelerationX", RL_App.FITFIELD_SENSORACCELERATIONX, Fit.DATA_TYPE_SINT16, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorAcceleration) as String });
+        $.RL_oFitField_SensorAccelerationY = oActivitySession.createField("SensorAccelerationY", RL_App.FITFIELD_SENSORACCELERATIONY, Fit.DATA_TYPE_SINT16, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorAcceleration) as String });
+        $.RL_oFitField_SensorAccelerationZ = oActivitySession.createField("SensorAccelerationZ", RL_App.FITFIELD_SENSORACCELERATIONZ, Fit.DATA_TYPE_SINT16, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorAcceleration) as String });
         iFitFields -= 3;
         iFitBytes -= 6;
       }
       if($.RL_oSettings.bSensorAcceleration_HD and iFitFields >= 3 and iFitBytes >= 6*RL_App.SAMPLERATE_ACCELERATION_HD) {
-        $.RL_oFitField_SensorAccelerationX_HD = $.RL_oActivitySession.createField("SensorAccelerationX_HD", RL_App.FITFIELD_SENSORACCELERATIONX_HD, FitContributor.DATA_TYPE_SINT16, { :count => RL_App.SAMPLERATE_ACCELERATION_HD, :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorAcceleration) });
-        $.RL_oFitField_SensorAccelerationY_HD = $.RL_oActivitySession.createField("SensorAccelerationY_HD", RL_App.FITFIELD_SENSORACCELERATIONY_HD, FitContributor.DATA_TYPE_SINT16, { :count => RL_App.SAMPLERATE_ACCELERATION_HD, :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorAcceleration) });
-        $.RL_oFitField_SensorAccelerationZ_HD = $.RL_oActivitySession.createField("SensorAccelerationZ_HD", RL_App.FITFIELD_SENSORACCELERATIONZ_HD, FitContributor.DATA_TYPE_SINT16, { :count => RL_App.SAMPLERATE_ACCELERATION_HD, :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorAcceleration) });
+        $.RL_oFitField_SensorAccelerationX_HD = oActivitySession.createField("SensorAccelerationX_HD", RL_App.FITFIELD_SENSORACCELERATIONX_HD, Fit.DATA_TYPE_SINT16, { :count => RL_App.SAMPLERATE_ACCELERATION_HD, :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorAcceleration) as String });
+        $.RL_oFitField_SensorAccelerationY_HD = oActivitySession.createField("SensorAccelerationY_HD", RL_App.FITFIELD_SENSORACCELERATIONY_HD, Fit.DATA_TYPE_SINT16, { :count => RL_App.SAMPLERATE_ACCELERATION_HD, :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorAcceleration) as String });
+        $.RL_oFitField_SensorAccelerationZ_HD = oActivitySession.createField("SensorAccelerationZ_HD", RL_App.FITFIELD_SENSORACCELERATIONZ_HD, Fit.DATA_TYPE_SINT16, { :count => RL_App.SAMPLERATE_ACCELERATION_HD, :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorAcceleration) as String });
         iFitFields -= 3;
         iFitBytes -= 6*RL_App.SAMPLERATE_ACCELERATION_HD;
         bHighDefListener_Acceleration = true;
       }
       if($.RL_oSettings.bSensorMagnetometer and iFitFields >= 3 and iFitBytes >= 6) {
-        $.RL_oFitField_SensorMagnetometerX = $.RL_oActivitySession.createField("SensorMagnetometerX", RL_App.FITFIELD_SENSORMAGNETOMETERX, FitContributor.DATA_TYPE_SINT16, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorMagnetometer) });
-        $.RL_oFitField_SensorMagnetometerY = $.RL_oActivitySession.createField("SensorMagnetometerY", RL_App.FITFIELD_SENSORMAGNETOMETERY, FitContributor.DATA_TYPE_SINT16, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorMagnetometer) });
-        $.RL_oFitField_SensorMagnetometerZ = $.RL_oActivitySession.createField("SensorMagnetometerZ", RL_App.FITFIELD_SENSORMAGNETOMETERZ, FitContributor.DATA_TYPE_SINT16, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorMagnetometer) });
+        $.RL_oFitField_SensorMagnetometerX = oActivitySession.createField("SensorMagnetometerX", RL_App.FITFIELD_SENSORMAGNETOMETERX, Fit.DATA_TYPE_SINT16, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorMagnetometer) as String });
+        $.RL_oFitField_SensorMagnetometerY = oActivitySession.createField("SensorMagnetometerY", RL_App.FITFIELD_SENSORMAGNETOMETERY, Fit.DATA_TYPE_SINT16, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorMagnetometer) as String });
+        $.RL_oFitField_SensorMagnetometerZ = oActivitySession.createField("SensorMagnetometerZ", RL_App.FITFIELD_SENSORMAGNETOMETERZ, Fit.DATA_TYPE_SINT16, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorMagnetometer) as String });
         iFitFields -= 3;
         iFitBytes -= 6;
       }
       if($.RL_oSettings.bSensorHeartrate and iFitFields >= 1 and iFitBytes >= 2) {
-        $.RL_oFitField_SensorHeartrate = $.RL_oActivitySession.createField("SensorHeartrate", RL_App.FITFIELD_SENSORHEARTRATE, FitContributor.DATA_TYPE_UINT16, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorHeartrate) });
+        $.RL_oFitField_SensorHeartrate = oActivitySession.createField("SensorHeartrate", RL_App.FITFIELD_SENSORHEARTRATE, Fit.DATA_TYPE_UINT16, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorHeartrate) as String });
         iFitFields -= 1;
         iFitBytes -= 2;
       }
       if($.RL_oSettings.bSensorCadence and iFitFields >= 1 and iFitBytes >= 2) {
-        $.RL_oFitField_SensorCadence = $.RL_oActivitySession.createField("SensorCadence", RL_App.FITFIELD_SENSORCADENCE, FitContributor.DATA_TYPE_UINT16, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorCadence) });
+        $.RL_oFitField_SensorCadence = oActivitySession.createField("SensorCadence", RL_App.FITFIELD_SENSORCADENCE, Fit.DATA_TYPE_UINT16, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorCadence) as String });
         iFitFields -= 1;
         iFitBytes -= 2;
       }
       if($.RL_oSettings.bSensorPower and iFitFields >= 1 and iFitBytes >= 2) {
-        $.RL_oFitField_SensorPower = $.RL_oActivitySession.createField("SensorPower", RL_App.FITFIELD_SENSORPOWER, FitContributor.DATA_TYPE_UINT16, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorPower) });
+        $.RL_oFitField_SensorPower = oActivitySession.createField("SensorPower", RL_App.FITFIELD_SENSORPOWER, Fit.DATA_TYPE_UINT16, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorPower) as String });
         iFitFields -= 1;
         iFitBytes -= 2;
       }
       if($.RL_oSettings.bSensorTemperature and iFitFields >= 1 and iFitBytes >= 4) {
-        $.RL_oFitField_SensorTemperature = $.RL_oActivitySession.createField("SensorTemperature", RL_App.FITFIELD_SENSORTEMPERATURE, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitSensorTemperature) });
+        $.RL_oFitField_SensorTemperature = oActivitySession.createField("SensorTemperature", RL_App.FITFIELD_SENSORTEMPERATURE, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitSensorTemperature) as String });
         iFitFields -= 1;
         iFitBytes -= 4;
       }
 
       // ... activity inputs
       if($.RL_oSettings.bActivityLocation and iFitFields >= 2 and iFitBytes >= 8) {
-        $.RL_oFitField_ActivityLatitude = $.RL_oActivitySession.createField("ActivityLatitude", RL_App.FITFIELD_ACTIVITYLATITUDE, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitActivityLocation) });
-        $.RL_oFitField_ActivityLongitude = $.RL_oActivitySession.createField("ActivityLongitude", RL_App.FITFIELD_ACTIVITYLONGITUDE, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitActivityLocation) });
+        $.RL_oFitField_ActivityLatitude = oActivitySession.createField("ActivityLatitude", RL_App.FITFIELD_ACTIVITYLATITUDE, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitActivityLocation) as String });
+        $.RL_oFitField_ActivityLongitude = oActivitySession.createField("ActivityLongitude", RL_App.FITFIELD_ACTIVITYLONGITUDE, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitActivityLocation) as String });
         iFitFields -= 2;
         iFitBytes -= 8;
       }
       if($.RL_oSettings.bActivityAltitude and iFitFields >= 1 and iFitBytes >= 4) {
-        $.RL_oFitField_ActivityAltitude = $.RL_oActivitySession.createField("ActivityAltitude", RL_App.FITFIELD_ACTIVITYALTITUDE, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitActivityAltitude) });
+        $.RL_oFitField_ActivityAltitude = oActivitySession.createField("ActivityAltitude", RL_App.FITFIELD_ACTIVITYALTITUDE, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitActivityAltitude) as String });
         iFitFields -= 1;
         iFitBytes -= 4;
       }
       if($.RL_oSettings.bActivitySpeed and iFitFields >= 1 and iFitBytes >= 4) {
-        $.RL_oFitField_ActivitySpeed = $.RL_oActivitySession.createField("ActivitySpeed", RL_App.FITFIELD_ACTIVITYSPEED, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitActivitySpeed) });
+        $.RL_oFitField_ActivitySpeed = oActivitySession.createField("ActivitySpeed", RL_App.FITFIELD_ACTIVITYSPEED, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitActivitySpeed) as String });
         iFitFields -= 1;
         iFitBytes -= 4;
       }
       if($.RL_oSettings.bActivityHeading and iFitFields >= 1 and iFitBytes >= 4) {
-        $.RL_oFitField_ActivityHeading = $.RL_oActivitySession.createField("ActivityHeading", RL_App.FITFIELD_ACTIVITYHEADING, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitActivityHeading) });
+        $.RL_oFitField_ActivityHeading = oActivitySession.createField("ActivityHeading", RL_App.FITFIELD_ACTIVITYHEADING, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitActivityHeading) as String });
         iFitFields -= 1;
         iFitBytes -= 4;
       }
       if($.RL_oSettings.bActivityAccuracy and iFitFields >= 1 and iFitBytes >= 2) {
-        $.RL_oFitField_ActivityAccuracy = $.RL_oActivitySession.createField("ActivityAccuracy", RL_App.FITFIELD_ACTIVITYACCURACY, FitContributor.DATA_TYPE_UINT16, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitActivityAccuracy) });
+        $.RL_oFitField_ActivityAccuracy = oActivitySession.createField("ActivityAccuracy", RL_App.FITFIELD_ACTIVITYACCURACY, Fit.DATA_TYPE_UINT16, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitActivityAccuracy) as String });
         iFitFields -= 1;
         iFitBytes -= 2;
       }
       if($.RL_oSettings.bActivityPressure and iFitFields >= 3 and iFitBytes >= 12) {
-        $.RL_oFitField_ActivityPressureRaw = $.RL_oActivitySession.createField("ActivityPressureRaw", RL_App.FITFIELD_ACTIVITYPRESSURERAW, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitActivityPressure) });
-        $.RL_oFitField_ActivityPressureAmbient = $.RL_oActivitySession.createField("ActivityPressureAmbient", RL_App.FITFIELD_ACTIVITYPRESSUREAMBIENT, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitActivityPressure) });
-        $.RL_oFitField_ActivityPressureMean = $.RL_oActivitySession.createField("ActivityPressureMean", RL_App.FITFIELD_ACTIVITYPRESSUREMEAN, FitContributor.DATA_TYPE_FLOAT, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitActivityPressure) });
+        $.RL_oFitField_ActivityPressureRaw = oActivitySession.createField("ActivityPressureRaw", RL_App.FITFIELD_ACTIVITYPRESSURERAW, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitActivityPressure) as String });
+        $.RL_oFitField_ActivityPressureAmbient = oActivitySession.createField("ActivityPressureAmbient", RL_App.FITFIELD_ACTIVITYPRESSUREAMBIENT, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitActivityPressure) as String });
+        $.RL_oFitField_ActivityPressureMean = oActivitySession.createField("ActivityPressureMean", RL_App.FITFIELD_ACTIVITYPRESSUREMEAN, Fit.DATA_TYPE_FLOAT, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitActivityPressure) as String });
         iFitFields -= 3;
         iFitBytes -= 12;
       }
       if($.RL_oSettings.bActivityHeartrate and iFitFields >= 1 and iFitBytes >= 2) {
-        $.RL_oFitField_ActivityHeartrate = $.RL_oActivitySession.createField("ActivityHeartrate", RL_App.FITFIELD_ACTIVITYHEARTRATE, FitContributor.DATA_TYPE_UINT16, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitActivityHeartrate) });
+        $.RL_oFitField_ActivityHeartrate = oActivitySession.createField("ActivityHeartrate", RL_App.FITFIELD_ACTIVITYHEARTRATE, Fit.DATA_TYPE_UINT16, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitActivityHeartrate) as String });
         iFitFields -= 1;
         iFitBytes -= 2;
       }
       if($.RL_oSettings.bActivityCadence and iFitFields >= 1 and iFitBytes >= 2) {
-        $.RL_oFitField_ActivityCadence = $.RL_oActivitySession.createField("ActivityCadence", RL_App.FITFIELD_ACTIVITYCADENCE, FitContributor.DATA_TYPE_UINT16, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitActivityCadence) });
+        $.RL_oFitField_ActivityCadence = oActivitySession.createField("ActivityCadence", RL_App.FITFIELD_ACTIVITYCADENCE, Fit.DATA_TYPE_UINT16, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitActivityCadence) as String });
         iFitFields -= 1;
         iFitBytes -= 2;
       }
       if($.RL_oSettings.bActivityPower and iFitFields >= 1 and iFitBytes >= 1) {
-        $.RL_oFitField_ActivityPower = $.RL_oActivitySession.createField("ActivityPower", RL_App.FITFIELD_ACTIVITYPOWER, FitContributor.DATA_TYPE_UINT8, { :mesgType => FitContributor.MESG_TYPE_RECORD, :units => Ui.loadResource(Rez.Strings.unitActivityPower) });
+        $.RL_oFitField_ActivityPower = oActivitySession.createField("ActivityPower", RL_App.FITFIELD_ACTIVITYPOWER, Fit.DATA_TYPE_UINT8, { :mesgType => Fit.MESG_TYPE_RECORD as Number, :units => Ui.loadResource(Rez.Strings.unitActivityPower) as String });
         iFitFields -= 1;
         iFitBytes -= 1;
       }
@@ -393,10 +391,13 @@ class RL_App extends App.AppBase {
       if(bHighDefListener_Acceleration) {
         Sensor.registerSensorDataListener(method(:onSensorData), { :period => 1, :accelerometer =>  { :enabled => true, :sampleRate => RL_App.SAMPLERATE_ACCELERATION_HD } });
       }
+
+      // ... done
+      $.RL_oActivitySession = oActivitySession;
     }
   }
 
-  function resetActivity() {
+  function resetActivity() as Void {
     $.RL_oActivitySession = null;
 
     // ... high-definition data listener
@@ -449,7 +450,7 @@ class RL_App extends App.AppBase {
     $.RL_oFitField_ActivityPower = null;
   }
 
-  function onLocationEvent(_oInfo) {
+  function onLocationEvent(_oInfo as Position.Info) as Void {
     //Sys.println("DEBUG: RL_App.onLocationEvent()");
 
     // Save FIT fields
@@ -459,23 +460,23 @@ class RL_App extends App.AppBase {
 
     // ... position inputs
     $.RL_oData.storePositionInfo(_oInfo);
-    if($.RL_oData.fPositionLatitude != null and $.RL_oFitField_PositionLatitude != null) {
-      $.RL_oFitField_PositionLatitude.setData($.RL_oData.fPositionLatitude);
+    if($.RL_oData.dPositionLatitude != null and $.RL_oFitField_PositionLatitude != null) {
+      ($.RL_oFitField_PositionLatitude as Fit.Field).setData($.RL_oData.dPositionLatitude as Object);
     }
-    if($.RL_oData.fPositionLongitude != null and $.RL_oFitField_PositionLongitude != null) {
-      $.RL_oFitField_PositionLongitude.setData($.RL_oData.fPositionLongitude);
+    if($.RL_oData.dPositionLongitude != null and $.RL_oFitField_PositionLongitude != null) {
+      ($.RL_oFitField_PositionLongitude as Fit.Field).setData($.RL_oData.dPositionLongitude as Object);
     }
     if($.RL_oData.fPositionAltitude != null and $.RL_oFitField_PositionAltitude != null) {
-      $.RL_oFitField_PositionAltitude.setData($.RL_oData.fPositionAltitude);
+      ($.RL_oFitField_PositionAltitude as Fit.Field).setData($.RL_oData.fPositionAltitude as Object);
     }
     if($.RL_oData.fPositionSpeed != null and $.RL_oFitField_PositionSpeed != null) {
-      $.RL_oFitField_PositionSpeed.setData($.RL_oData.fPositionSpeed);
+      ($.RL_oFitField_PositionSpeed as Fit.Field).setData($.RL_oData.fPositionSpeed as Object);
     }
     if($.RL_oData.fPositionHeading != null and $.RL_oFitField_PositionHeading != null) {
-      $.RL_oFitField_PositionHeading.setData($.RL_oData.fPositionHeading);
+      ($.RL_oFitField_PositionHeading as Fit.Field).setData($.RL_oData.fPositionHeading as Object);
     }
-    if($.RL_oData.iPositionAccuracy != null and $.RL_oFitField_PositionAccuracy != null) {
-      $.RL_oFitField_PositionAccuracy.setData($.RL_oData.iPositionAccuracy);
+    if($.RL_oData.ePositionAccuracy != null and $.RL_oFitField_PositionAccuracy != null) {
+      ($.RL_oFitField_PositionAccuracy as Fit.Field).setData($.RL_oData.ePositionAccuracy as Object);
     }
 
     // ... activity inputs
@@ -485,7 +486,7 @@ class RL_App extends App.AppBase {
     self.updateUi();
   }
 
-  function onSensorEvent(_oInfo) {
+  function onSensorEvent(_oInfo as Sensor.Info) as Void {
     //Sys.println("DEBUG: RL_App.onSensorEvent());
 
     // Save FIT fields
@@ -496,46 +497,46 @@ class RL_App extends App.AppBase {
     // ... sensor inputs
     $.RL_oData.storeSensorInfo(_oInfo);
     if($.RL_oData.fSensorAltitude != null and $.RL_oFitField_SensorAltitude != null) {
-      $.RL_oFitField_SensorAltitude.setData($.RL_oData.fSensorAltitude);
+      ($.RL_oFitField_SensorAltitude as Fit.Field).setData($.RL_oData.fSensorAltitude as Object);
     }
     if($.RL_oData.fSensorSpeed != null and $.RL_oFitField_SensorSpeed != null) {
-      $.RL_oFitField_SensorSpeed.setData($.RL_oData.fSensorSpeed);
+      ($.RL_oFitField_SensorSpeed as Fit.Field).setData($.RL_oData.fSensorSpeed as Object);
     }
     if($.RL_oData.fSensorHeading != null and $.RL_oFitField_SensorHeading != null) {
-      $.RL_oFitField_SensorHeading.setData($.RL_oData.fSensorHeading);
+      ($.RL_oFitField_SensorHeading as Fit.Field).setData($.RL_oData.fSensorHeading as Object);
     }
     if($.RL_oData.fSensorPressure != null and $.RL_oFitField_SensorPressure != null) {
-      $.RL_oFitField_SensorPressure.setData($.RL_oData.fSensorPressure);
+      ($.RL_oFitField_SensorPressure as Fit.Field).setData($.RL_oData.fSensorPressure as Object);
     }
     if($.RL_oData.iSensorAccelerationX != null and $.RL_oFitField_SensorAccelerationX != null) {
-      $.RL_oFitField_SensorAccelerationX.setData($.RL_oData.iSensorAccelerationX);
+      ($.RL_oFitField_SensorAccelerationX as Fit.Field).setData($.RL_oData.iSensorAccelerationX as Object);
     }
     if($.RL_oData.iSensorAccelerationY != null and $.RL_oFitField_SensorAccelerationY != null) {
-      $.RL_oFitField_SensorAccelerationY.setData($.RL_oData.iSensorAccelerationY);
+      ($.RL_oFitField_SensorAccelerationY as Fit.Field).setData($.RL_oData.iSensorAccelerationY as Object);
     }
     if($.RL_oData.iSensorAccelerationZ != null and $.RL_oFitField_SensorAccelerationZ != null) {
-      $.RL_oFitField_SensorAccelerationZ.setData($.RL_oData.iSensorAccelerationZ);
+      ($.RL_oFitField_SensorAccelerationZ as Fit.Field).setData($.RL_oData.iSensorAccelerationZ as Object);
     }
     if($.RL_oData.iSensorMagnetometerX != null and $.RL_oFitField_SensorMagnetometerX != null) {
-      $.RL_oFitField_SensorMagnetometerX.setData($.RL_oData.iSensorMagnetometerX);
+      ($.RL_oFitField_SensorMagnetometerX as Fit.Field).setData($.RL_oData.iSensorMagnetometerX as Object);
     }
     if($.RL_oData.iSensorMagnetometerY != null and $.RL_oFitField_SensorMagnetometerY != null) {
-      $.RL_oFitField_SensorMagnetometerY.setData($.RL_oData.iSensorMagnetometerY);
+      ($.RL_oFitField_SensorMagnetometerY as Fit.Field).setData($.RL_oData.iSensorMagnetometerY as Object);
     }
     if($.RL_oData.iSensorMagnetometerZ != null and $.RL_oFitField_SensorMagnetometerZ != null) {
-      $.RL_oFitField_SensorMagnetometerZ.setData($.RL_oData.iSensorMagnetometerZ);
+      ($.RL_oFitField_SensorMagnetometerZ as Fit.Field).setData($.RL_oData.iSensorMagnetometerZ as Object);
     }
     if($.RL_oData.iSensorHeartrate != null and $.RL_oFitField_SensorHeartrate != null) {
-      $.RL_oFitField_SensorHeartrate.setData($.RL_oData.iSensorHeartrate);
+      ($.RL_oFitField_SensorHeartrate as Fit.Field).setData($.RL_oData.iSensorHeartrate as Object);
     }
     if($.RL_oData.iSensorCadence != null and $.RL_oFitField_SensorCadence != null) {
-      $.RL_oFitField_SensorCadence.setData($.RL_oData.iSensorCadence);
+      ($.RL_oFitField_SensorCadence as Fit.Field).setData($.RL_oData.iSensorCadence as Object);
     }
     if($.RL_oData.iSensorPower != null and $.RL_oFitField_SensorPower != null) {
-      $.RL_oFitField_SensorPower.setData($.RL_oData.iSensorPower);
+      ($.RL_oFitField_SensorPower as Fit.Field).setData($.RL_oData.iSensorPower as Object);
     }
     if($.RL_oData.fSensorTemperature != null and $.RL_oFitField_SensorTemperature != null) {
-      $.RL_oFitField_SensorTemperature.setData($.RL_oData.fSensorTemperature);
+      ($.RL_oFitField_SensorTemperature as Fit.Field).setData($.RL_oData.fSensorTemperature as Object);
     }
 
     // ... activity inputs
@@ -545,7 +546,7 @@ class RL_App extends App.AppBase {
     self.updateUi();
   }
 
-  function onSensorData(_oData) {
+  function onSensorData(_oData as Sensor.SensorData) as Void {
     //Sys.println("DEBUG: RL_App.onSensorData());
 
     // Save FIT fields
@@ -553,98 +554,101 @@ class RL_App extends App.AppBase {
     // ... sensor inputs
     $.RL_oData.storeSensorData(_oData);
     if($.RL_oData.aiSensorAccelerationX_HD != null and $.RL_oFitField_SensorAccelerationX_HD != null) {
-      $.RL_oFitField_SensorAccelerationX_HD.setData($.RL_oData.aiSensorAccelerationX_HD.slice(0, RL_App.SAMPLERATE_ACCELERATION_HD));
+      ($.RL_oFitField_SensorAccelerationX_HD as Fit.Field).setData(($.RL_oData.aiSensorAccelerationX_HD as Array<Number>).slice(0, RL_App.SAMPLERATE_ACCELERATION_HD) as Object);
     }
     if($.RL_oData.aiSensorAccelerationY_HD != null and $.RL_oFitField_SensorAccelerationY_HD != null) {
-      $.RL_oFitField_SensorAccelerationY_HD.setData($.RL_oData.aiSensorAccelerationY_HD.slice(0, RL_App.SAMPLERATE_ACCELERATION_HD));
+      ($.RL_oFitField_SensorAccelerationY_HD as Fit.Field).setData(($.RL_oData.aiSensorAccelerationY_HD as Array<Number>).slice(0, RL_App.SAMPLERATE_ACCELERATION_HD) as Object);
     }
     if($.RL_oData.aiSensorAccelerationZ_HD != null and $.RL_oFitField_SensorAccelerationZ_HD != null) {
-      $.RL_oFitField_SensorAccelerationZ_HD.setData($.RL_oData.aiSensorAccelerationZ_HD.slice(0, RL_App.SAMPLERATE_ACCELERATION_HD));
+      ($.RL_oFitField_SensorAccelerationZ_HD as Fit.Field).setData(($.RL_oData.aiSensorAccelerationZ_HD as Array<Number>).slice(0, RL_App.SAMPLERATE_ACCELERATION_HD) as Object);
     }
 
     // UI update
     self.updateUi();
   }
 
-  function saveSystemStats() {
+  function saveSystemStats() as Void {
     //Sys.println("DEBUG: RL_App.saveSystemStats()");
     $.RL_oData.storeSystemStats(Sys.getSystemStats());
 
     // Save FIT fields
     // ... system inputs
     if($.RL_oData.fSystemBattery != null and $.RL_oFitField_SystemBattery != null) {
-      $.RL_oFitField_SystemBattery.setData($.RL_oData.fSystemBattery);
+      ($.RL_oFitField_SystemBattery as Fit.Field).setData($.RL_oData.fSystemBattery as Object);
     }
     if($.RL_oData.iSystemMemoryUsed != null and $.RL_oFitField_SystemMemoryUsed != null) {
-      $.RL_oFitField_SystemMemoryUsed.setData($.RL_oData.iSystemMemoryUsed);
+      ($.RL_oFitField_SystemMemoryUsed as Fit.Field).setData($.RL_oData.iSystemMemoryUsed as Object);
     }
     if($.RL_oData.iSystemMemoryFree != null and $.RL_oFitField_SystemMemoryFree != null) {
-      $.RL_oFitField_SystemMemoryFree.setData($.RL_oData.iSystemMemoryFree);
+      ($.RL_oFitField_SystemMemoryFree as Fit.Field).setData($.RL_oData.iSystemMemoryFree as Object);
     }
   }
 
-  function saveActivityInfo() {
+  function saveActivityInfo() as Void {
     //Sys.println("DEBUG: RL_App.saveActivityInfo());
-    $.RL_oData.storeActivityInfo(Activity.getActivityInfo());
+    var oInfo = Activity.getActivityInfo();
+    if(oInfo != null) {
+      $.RL_oData.storeActivityInfo(oInfo as Activity.Info);
+    }
 
     // Save FIT fields
     // ... activity inputs
-    if($.RL_oData.fActivityLatitude != null and $.RL_oFitField_ActivityLatitude != null) {
-      $.RL_oFitField_ActivityLatitude.setData($.RL_oData.fActivityLatitude);
+    if($.RL_oData.dActivityLatitude != null and $.RL_oFitField_ActivityLatitude != null) {
+      ($.RL_oFitField_ActivityLatitude as Fit.Field).setData($.RL_oData.dActivityLatitude as Object);
     }
-    if($.RL_oData.fActivityLongitude != null and $.RL_oFitField_ActivityLongitude != null) {
-      $.RL_oFitField_ActivityLongitude.setData($.RL_oData.fActivityLongitude);
+    if($.RL_oData.dActivityLongitude != null and $.RL_oFitField_ActivityLongitude != null) {
+      ($.RL_oFitField_ActivityLongitude as Fit.Field).setData($.RL_oData.dActivityLongitude as Object);
     }
     if($.RL_oData.fActivityAltitude != null and $.RL_oFitField_ActivityAltitude != null) {
-      $.RL_oFitField_ActivityAltitude.setData($.RL_oData.fActivityAltitude);
+      ($.RL_oFitField_ActivityAltitude as Fit.Field).setData($.RL_oData.fActivityAltitude as Object);
     }
     if($.RL_oData.fActivitySpeed != null and $.RL_oFitField_ActivitySpeed != null) {
-      $.RL_oFitField_ActivitySpeed.setData($.RL_oData.fActivitySpeed);
+      ($.RL_oFitField_ActivitySpeed as Fit.Field).setData($.RL_oData.fActivitySpeed as Object);
     }
     if($.RL_oData.fActivityHeading != null and $.RL_oFitField_ActivityHeading != null) {
-      $.RL_oFitField_ActivityHeading.setData($.RL_oData.fActivityHeading);
+      ($.RL_oFitField_ActivityHeading as Fit.Field).setData($.RL_oData.fActivityHeading as Object);
     }
-    if($.RL_oData.iActivityAccuracy != null and $.RL_oFitField_ActivityAccuracy != null) {
-      $.RL_oFitField_ActivityAccuracy.setData($.RL_oData.iActivityAccuracy);
+    if($.RL_oData.eActivityAccuracy != null and $.RL_oFitField_ActivityAccuracy != null) {
+      ($.RL_oFitField_ActivityAccuracy as Fit.Field).setData($.RL_oData.eActivityAccuracy as Object);
     }
     if($.RL_oData.fActivityPressureRaw != null and $.RL_oFitField_ActivityPressureRaw != null) {
-      $.RL_oFitField_ActivityPressureRaw.setData($.RL_oData.fActivityPressureRaw);
+      ($.RL_oFitField_ActivityPressureRaw as Fit.Field).setData($.RL_oData.fActivityPressureRaw as Object);
     }
     if($.RL_oData.fActivityPressureAmbient != null and $.RL_oFitField_ActivityPressureAmbient != null) {
-      $.RL_oFitField_ActivityPressureAmbient.setData($.RL_oData.fActivityPressureAmbient);
+      ($.RL_oFitField_ActivityPressureAmbient as Fit.Field).setData($.RL_oData.fActivityPressureAmbient as Object);
     }
     if($.RL_oData.fActivityPressureMean != null and $.RL_oFitField_ActivityPressureMean != null) {
-      $.RL_oFitField_ActivityPressureMean.setData($.RL_oData.fActivityPressureMean);
+      ($.RL_oFitField_ActivityPressureMean as Fit.Field).setData($.RL_oData.fActivityPressureMean as Object);
     }
     if($.RL_oData.iActivityHeartrate != null and $.RL_oFitField_ActivityHeartrate != null) {
-      $.RL_oFitField_ActivityHeartrate.setData($.RL_oData.iActivityHeartrate);
+      ($.RL_oFitField_ActivityHeartrate as Fit.Field).setData($.RL_oData.iActivityHeartrate as Object);
     }
     if($.RL_oData.iActivityCadence != null and $.RL_oFitField_ActivityCadence != null) {
-      $.RL_oFitField_ActivityCadence.setData($.RL_oData.iActivityCadence);
+      ($.RL_oFitField_ActivityCadence as Fit.Field).setData($.RL_oData.iActivityCadence as Object);
     }
     if($.RL_oData.iActivityPower != null and $.RL_oFitField_ActivityPower != null) {
-      $.RL_oFitField_ActivityPower.setData($.RL_oData.iActivityPower);
+      ($.RL_oFitField_ActivityPower as Fit.Field).setData($.RL_oData.iActivityPower as Object);
     }
   }
 
-  function onUpdateTimer_init() {
+  function onUpdateTimer_init() as Void {
     //Sys.println("DEBUG: RL_App.onUpdateTimer_init()");
     self.onUpdateTimer();
     self.oUpdateTimer = new Timer.Timer();
     self.oUpdateTimer.start(method(:onUpdateTimer), 5000, true);
   }
 
-  function onUpdateTimer() {
+  function onUpdateTimer() as Void {
     //Sys.println("DEBUG: RL_App.onUpdateTimer()");
     self.updateUi();
   }
 
-  function updateUi() {
+  function updateUi() as Void {
     //Sys.println("DEBUG: RL_App.updateUi()");
 
     // Update UI
     if($.RL_oCurrentView != null) {
-      $.RL_oCurrentView.updateUi();
+      ($.RL_oCurrentView as RL_View).updateUi();
     }
   }
 

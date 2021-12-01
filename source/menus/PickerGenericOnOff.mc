@@ -16,6 +16,7 @@
 // SPDX-License-Identifier: GPL-3.0
 // License-Filename: LICENSE/GPL-3.0.txt
 
+import Toybox.Lang;
 using Toybox.Application as App;
 using Toybox.Graphics as Gfx;
 using Toybox.WatchUi as Ui;
@@ -26,9 +27,9 @@ class PickerGenericOnOff extends Ui.Picker {
   // FUNCTIONS: Ui.Picker (override/implement)
   //
 
-  function initialize(_sPropertyId, _sTitle) {
+  function initialize(_sPropertyId as String, _sTitle as String) {
     // Get property
-    var bOnOff = App.Properties.getValue(_sPropertyId);
+    var bOnOff = App.Properties.getValue(_sPropertyId) as Boolean;
 
     // Initialize picker
     var oFactory = new PickerFactoryDictionary([true, false], [Ui.loadResource(Rez.Strings.valueOn), Ui.loadResource(Rez.Strings.valueOff)], null);
@@ -47,28 +48,30 @@ class PickerDelegateGenericOnOff extends Ui.PickerDelegate {
   // VARIABLES
   //
 
-  private var sPropertyId;
+  private var sPropertyId as String = "null";
 
 
   //
-  // FUNCTIONS: Ui.Picker (override/implement)
+  // FUNCTIONS: Ui.PickerDelegate (override/implement)
   //
 
-  function initialize(_sPropertyId) {
+  function initialize(_sPropertyId as String) {
     PickerDelegate.initialize();
     self.sPropertyId = _sPropertyId;
   }
 
-  function onAccept(_amValues) {
+  function onAccept(_amValues as Array<App.PropertyValueType>) {
     // Set property and exit
     App.Properties.setValue(self.sPropertyId, _amValues[0]);
     $.RL_oSettings.load();
     Ui.popView(Ui.SLIDE_IMMEDIATE);
+    return true;
   }
 
   function onCancel() {
     // Exit
     Ui.popView(Ui.SLIDE_IMMEDIATE);
+    return true;
   }
 
 }

@@ -16,6 +16,12 @@
 // SPDX-License-Identifier: GPL-3.0
 // License-Filename: LICENSE/GPL-3.0.txt
 
+import Toybox.Lang;
+using Toybox.Activity;
+using Toybox.Position;
+using Toybox.Sensor;
+using Toybox.System as Sys;
+
 //
 // CLASS
 //
@@ -28,54 +34,54 @@ class RL_Data {
 
   // Inputs
   // ... system
-  public var fSystemBattery;
-  public var iSystemMemoryUsed;
-  public var iSystemMemoryFree;
+  public var fSystemBattery as Float?;
+  public var iSystemMemoryUsed as Number?;
+  public var iSystemMemoryFree as Number?;
   // ... position
-  public var fPositionLatitude;
-  public var fPositionLongitude;
-  public var fPositionAltitude;
-  public var fPositionSpeed;
-  public var fPositionHeading;
-  public var iPositionAccuracy;
+  public var dPositionLatitude as Double?;
+  public var dPositionLongitude as Double?;
+  public var fPositionAltitude as Float?;
+  public var fPositionSpeed as Float?;
+  public var fPositionHeading as Float?;
+  public var ePositionAccuracy as Position.Quality?;
   // ... sensor
-  public var fSensorAltitude;
-  public var fSensorSpeed;
-  public var fSensorHeading;
-  public var fSensorPressure;
-  public var iSensorAccelerationX;
-  public var iSensorAccelerationY;
-  public var iSensorAccelerationZ;
-  public var aiSensorAccelerationX_HD;
-  public var aiSensorAccelerationY_HD;
-  public var aiSensorAccelerationZ_HD;
-  public var iSensorMagnetometerX;
-  public var iSensorMagnetometerY;
-  public var iSensorMagnetometerZ;
-  public var iSensorHeartrate;
-  public var iSensorCadence;
-  public var iSensorPower;
-  public var fSensorTemperature;
+  public var fSensorAltitude as Float?;
+  public var fSensorSpeed as Float?;
+  public var fSensorHeading as Float?;
+  public var fSensorPressure as Float?;
+  public var iSensorAccelerationX as Number?;
+  public var iSensorAccelerationY as Number?;
+  public var iSensorAccelerationZ as Number?;
+  public var aiSensorAccelerationX_HD as Array<Number>?;
+  public var aiSensorAccelerationY_HD as Array<Number>?;
+  public var aiSensorAccelerationZ_HD as Array<Number>?;
+  public var iSensorMagnetometerX as Number?;
+  public var iSensorMagnetometerY as Number?;
+  public var iSensorMagnetometerZ as Number?;
+  public var iSensorHeartrate as Number?;
+  public var iSensorCadence as Number?;
+  public var iSensorPower as Number?;
+  public var fSensorTemperature as Float?;
   // ... activity
-  public var fActivityLatitude;
-  public var fActivityLongitude;
-  public var fActivityAltitude;
-  public var fActivitySpeed;
-  public var fActivityHeading;
-  public var iActivityAccuracy;
-  public var fActivityPressureRaw;
-  public var fActivityPressureAmbient;
-  public var fActivityPressureMean;
-  public var iActivityHeartrate;
-  public var iActivityCadence;
-  public var iActivityPower;
+  public var dActivityLatitude as Double?;
+  public var dActivityLongitude as Double?;
+  public var fActivityAltitude as Float?;
+  public var fActivitySpeed as Float?;
+  public var fActivityHeading as Float?;
+  public var eActivityAccuracy as Position.Quality?;
+  public var fActivityPressureRaw as Float?;
+  public var fActivityPressureAmbient as Float?;
+  public var fActivityPressureMean as Float?;
+  public var iActivityHeartrate as Number?;
+  public var iActivityCadence as Number?;
+  public var iActivityPower as Number?;
 
-  
+
   //
   // FUNCTIONS: self
   //
 
-  function storeSystemStats(_oStats) {
+  function storeSystemStats(_oStats as Sys.Stats) as Void {
     // ... battery
     if(_oStats has :battery and _oStats.battery != null) {
       self.fSystemBattery = _oStats.battery;
@@ -99,16 +105,16 @@ class RL_Data {
     }
   }
 
-  function storePositionInfo(_oInfo) {
+  function storePositionInfo(_oInfo as Position.Info) as Void {
     // ... position
     if(_oInfo has :position and _oInfo.position != null) {
-      var afLocation = _oInfo.position.toDegrees();
-      self.fPositionLatitude = afLocation[0];
-      self.fPositionLongitude = afLocation[1];
+      var afLocation = (_oInfo.position as Position.Location).toDegrees();
+      self.dPositionLatitude = afLocation[0];
+      self.dPositionLongitude = afLocation[1];
     }
     else {
-      self.fPositionLatitude = null;
-      self.fPositionLongitude = null;
+      self.dPositionLatitude = null;
+      self.dPositionLongitude = null;
     }
     // ... altitude
     if(_oInfo has :altitude and _oInfo.altitude != null) {
@@ -133,14 +139,14 @@ class RL_Data {
     }
     // ... accuracy
     if(_oInfo has :accuracy and _oInfo.accuracy != null) {
-      self.iPositionAccuracy = _oInfo.accuracy;
+      self.ePositionAccuracy = _oInfo.accuracy;
     }
     else {
-      self.iPositionAccuracy = null;
+      self.ePositionAccuracy = null;
     }
   }
 
-  function storeSensorInfo(_oInfo) {
+  function storeSensorInfo(_oInfo as Sensor.Info) as Void {
     // ... altitude
     if(_oInfo has :altitude and _oInfo.altitude != null) {
       self.fSensorAltitude = _oInfo.altitude;
@@ -171,9 +177,9 @@ class RL_Data {
     }
     // ... acceleration
     if(_oInfo has :accel and _oInfo.accel != null) {
-      self.iSensorAccelerationX = _oInfo.accel[0];
-      self.iSensorAccelerationY = _oInfo.accel[1];
-      self.iSensorAccelerationZ = _oInfo.accel[2];
+      self.iSensorAccelerationX = (_oInfo.accel as Array<Number>)[0];
+      self.iSensorAccelerationY = (_oInfo.accel as Array<Number>)[1];
+      self.iSensorAccelerationZ = (_oInfo.accel as Array<Number>)[2];
     }
     else {
       self.iSensorAccelerationX = null;
@@ -182,9 +188,9 @@ class RL_Data {
     }
     // ... magnetometer
     if(_oInfo has :mag and _oInfo.mag != null) {
-      self.iSensorMagnetometerX = _oInfo.mag[0];
-      self.iSensorMagnetometerY = _oInfo.mag[1];
-      self.iSensorMagnetometerZ = _oInfo.mag[2];
+      self.iSensorMagnetometerX = (_oInfo.mag as Array<Number>)[0];
+      self.iSensorMagnetometerY = (_oInfo.mag as Array<Number>)[1];
+      self.iSensorMagnetometerZ = (_oInfo.mag as Array<Number>)[2];
     }
     else {
       self.iSensorMagnetometerX = null;
@@ -221,12 +227,12 @@ class RL_Data {
     }
   }
 
-  function storeSensorData(_oData) {
+  function storeSensorData(_oData as Sensor.SensorData) as Void {
     // ... acceleration
     if(_oData has :accelerometerData and _oData.accelerometerData != null) {
-      self.aiSensorAccelerationX_HD = _oData.accelerometerData.x;
-      self.aiSensorAccelerationY_HD = _oData.accelerometerData.y;
-      self.aiSensorAccelerationZ_HD = _oData.accelerometerData.z;
+      self.aiSensorAccelerationX_HD = (_oData.accelerometerData as Sensor.AccelerometerData).x;
+      self.aiSensorAccelerationY_HD = (_oData.accelerometerData as Sensor.AccelerometerData).y;
+      self.aiSensorAccelerationZ_HD = (_oData.accelerometerData as Sensor.AccelerometerData).z;
     }
     else {
       self.aiSensorAccelerationX_HD = null;
@@ -235,16 +241,16 @@ class RL_Data {
     }
   }
 
-  function storeActivityInfo(_oInfo) {
+  function storeActivityInfo(_oInfo as Activity.Info) as Void {
     // ... position
     if(_oInfo has :currentLocation and _oInfo.currentLocation != null) {
-      var afLocation = _oInfo.currentLocation.toDegrees();
-      self.fActivityLatitude = afLocation[0];
-      self.fActivityLongitude = afLocation[1];
+      var afLocation = (_oInfo.currentLocation as Position.Location).toDegrees();
+      self.dActivityLatitude = afLocation[0];
+      self.dActivityLongitude = afLocation[1];
     }
     else {
-      self.fActivityLatitude = null;
-      self.fActivityLongitude = null;
+      self.dActivityLatitude = null;
+      self.dActivityLongitude = null;
     }
     // ... altitude
     if(_oInfo has :altitude and _oInfo.altitude != null) {
@@ -269,10 +275,10 @@ class RL_Data {
     }
     // ... accuracy
     if(_oInfo has :currentLocationAccuracy and _oInfo.currentLocationAccuracy != null) {
-      self.iActivityAccuracy = _oInfo.currentLocationAccuracy;
+      self.eActivityAccuracy = _oInfo.currentLocationAccuracy;
     }
     else {
-      self.iActivityAccuracy = null;
+      self.eActivityAccuracy = null;
     }
     // ... pressure (raw)
     if(_oInfo has :rawAmbientPressure and _oInfo.rawAmbientPressure != null) {

@@ -16,6 +16,7 @@
 // SPDX-License-Identifier: GPL-3.0
 // License-Filename: LICENSE/GPL-3.0.txt
 
+import Toybox.Lang;
 using Toybox.System as Sys;
 using Toybox.WatchUi as Ui;
 
@@ -34,47 +35,47 @@ class MenuDelegateSettingsSensor extends Ui.MenuInputDelegate {
   function onMenuItem(item) {
     if (item == :menuSettingsAltitude) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsAltitude)");
-      Ui.pushView(new PickerGenericOnOff("userSensorAltitude", Ui.loadResource(Rez.Strings.labelAltitude)), new PickerDelegateGenericOnOff("userSensorAltitude"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userSensorAltitude", Ui.loadResource(Rez.Strings.labelAltitude) as String), new PickerDelegateGenericOnOff("userSensorAltitude"), Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsSpeed) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsSpeed)");
-      Ui.pushView(new PickerGenericOnOff("userSensorSpeed", Ui.loadResource(Rez.Strings.labelSpeed)), new PickerDelegateGenericOnOff("userSensorSpeed"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userSensorSpeed", Ui.loadResource(Rez.Strings.labelSpeed) as String), new PickerDelegateGenericOnOff("userSensorSpeed"), Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsHeading) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsHeading)");
-      Ui.pushView(new PickerGenericOnOff("userSensorHeading", Ui.loadResource(Rez.Strings.labelHeading)), new PickerDelegateGenericOnOff("userSensorHeading"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userSensorHeading", Ui.loadResource(Rez.Strings.labelHeading) as String), new PickerDelegateGenericOnOff("userSensorHeading"), Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsPressure) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsPressure)");
-      Ui.pushView(new PickerGenericOnOff("userSensorPressure", Ui.loadResource(Rez.Strings.labelPressure)), new PickerDelegateGenericOnOff("userSensorPressure"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userSensorPressure", Ui.loadResource(Rez.Strings.labelPressure) as String), new PickerDelegateGenericOnOff("userSensorPressure"), Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsAcceleration) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsAcceleration)");
-      Ui.pushView(new PickerGenericOnOff("userSensorAcceleration", Ui.loadResource(Rez.Strings.labelAcceleration)), new PickerDelegateGenericOnOff("userSensorAcceleration"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userSensorAcceleration", Ui.loadResource(Rez.Strings.labelAcceleration) as String), new PickerDelegateGenericOnOff("userSensorAcceleration"), Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsAcceleration_HD) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsAcceleration_HD)");
-      Ui.pushView(new PickerGenericOnOff("userSensorAcceleration_HD", Ui.loadResource(Rez.Strings.labelAcceleration_HD)), new PickerDelegateGenericOnOff("userSensorAcceleration_HD"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userSensorAcceleration_HD", Ui.loadResource(Rez.Strings.labelAcceleration_HD) as String), new PickerDelegateGenericOnOff("userSensorAcceleration_HD"), Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsMagnetometer) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsMagnetometer)");
-      Ui.pushView(new PickerGenericOnOff("userSensorMagnetometer", Ui.loadResource(Rez.Strings.labelMagnetometer)), new PickerDelegateGenericOnOff("userSensorMagnetometer"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userSensorMagnetometer", Ui.loadResource(Rez.Strings.labelMagnetometer) as String), new PickerDelegateGenericOnOff("userSensorMagnetometer"), Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsHeartrate) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsHeartrate)");
-      Ui.pushView(new PickerGenericOnOff("userSensorHeartrate", Ui.loadResource(Rez.Strings.labelHeartrate)), new PickerDelegateGenericOnOff("userSensorHeartrate"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userSensorHeartrate", Ui.loadResource(Rez.Strings.labelHeartrate) as String), new PickerDelegateGenericOnOff("userSensorHeartrate"), Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsCadence) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsCadence)");
-      Ui.pushView(new PickerGenericOnOff("userSensorCadence", Ui.loadResource(Rez.Strings.labelCadence)), new PickerDelegateGenericOnOff("userSensorCadence"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userSensorCadence", Ui.loadResource(Rez.Strings.labelCadence) as String), new PickerDelegateGenericOnOff("userSensorCadence"), Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsPower) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsPower)");
-      Ui.pushView(new PickerGenericOnOff("userSensorPower", Ui.loadResource(Rez.Strings.labelPower)), new PickerDelegateGenericOnOff("userSensorPower"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userSensorPower", Ui.loadResource(Rez.Strings.labelPower) as String), new PickerDelegateGenericOnOff("userSensorPower"), Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsTemperature) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsTemperature)");
-      Ui.pushView(new PickerGenericOnOff("userSensorTemperature", Ui.loadResource(Rez.Strings.labelTemperature)), new PickerDelegateGenericOnOff("userSensorTemperature"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userSensorTemperature", Ui.loadResource(Rez.Strings.labelTemperature) as String), new PickerDelegateGenericOnOff("userSensorTemperature"), Ui.SLIDE_IMMEDIATE);
     }
   }
 

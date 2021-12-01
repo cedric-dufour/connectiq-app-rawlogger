@@ -25,9 +25,9 @@ ifndef CIQ_MONKEYGRAPH
 CIQ_MONKEYGRAPH := ${CIQ_ROOT}/bin/fit-graph.jar
 endif
 
-# Target SDK version
-ifndef CIQ_SDK
-CIQ_SDK := 3.0.0
+# Target API version
+ifndef CIQ_API
+CIQ_API := 3.0.0
 endif
 
 # Target device
@@ -83,20 +83,13 @@ ${CIQ_FITFILE}:
 ciq-help:
 	@echo 'ConnectIQ targets:'
 	@echo '  ciq-help      - display this help message'
-	@echo '  ciq-devices   - list available target devices'
 	@echo 'Environment (variables):'
 	@echo '  CIQ_ROOT        = ${CIQ_ROOT}'
 	@echo '  CIQ_MONKEYC     = ${CIQ_MONKEYC}'
 	@echo '  CIQ_SIMULATOR   = ${CIQ_SIMULATOR}'
 	@echo '  CIQ_MONKEYDO    = ${CIQ_MONKEYDO}'
 	@echo '  CIQ_MONKEYGRAPH = ${CIQ_MONKEYGRAPH}'
-	@echo '  CIQ_SDK         = ${CIQ_SDK}'
+	@echo '  CIQ_API         = ${CIQ_API}'
 	@echo '  CIQ_DEVICE      = ${CIQ_DEVICE}'
 	@echo '  CIQ_DEVKEY      = ${CIQ_DEVKEY}'
 	@echo '  CIQ_FITFILE     = ${CIQ_FITFILE}'
-
-# Available devices
-.PHONY: ciq-devices
-ciq-devices: ${CIQ_ROOT}
-	fgrep '<device family' ${CIQ_ROOT}/share/simulator/devices.xml
-

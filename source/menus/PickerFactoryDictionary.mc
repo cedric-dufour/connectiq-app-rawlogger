@@ -16,6 +16,7 @@
 // SPDX-License-Identifier: GPL-3.0
 // License-Filename: LICENSE/GPL-3.0.txt
 
+import Toybox.Lang;
 using Toybox.Graphics as Gfx;
 using Toybox.WatchUi as Ui;
 
@@ -25,40 +26,38 @@ class PickerFactoryDictionary extends Ui.PickerFactory {
   // VARIABLES
   //
 
-  private var amKeys;
-  private var amValues;
-  private var amSettingsKeys;
-  private var amSettingsValues;
+  private var amKeys as Array = [];
+  private var amValues as Array = [];
+  private var amSettingsKeys as Array = [];
+  private var amSettingsValues as Array = [];
 
   //
   // FUNCTIONS: Ui.PickerFactory (override/implement)
   //
 
-  function initialize(_amKeys, _amValues, _dictSettings) {
+  function initialize(_amKeys as Array, _amValues as Array, _dictSettings as Dictionary?) {
     PickerFactory.initialize();
     self.amKeys = _amKeys;
     self.amValues = _amValues;
     if(_dictSettings != null) {
-      self.amSettingsKeys = _dictSettings.keys();
-      self.amSettingsValues = _dictSettings.values();
+      self.amSettingsKeys = (_dictSettings as Dictionary).keys();
+      self.amSettingsValues = (_dictSettings as Dictionary).values();
     }
     else {
-      self.amSettingsKeys = null;
-      self.amSettingsValues = null;
+      self.amSettingsKeys = [];
+      self.amSettingsValues = [];
     }
   }
 
   function getDrawable(_iItem, _bSelected) {
     var dictSettings = {
-      :text => self.amValues[_iItem],
+      :text => self.amValues[_iItem] as String,
       :locX => Ui.LAYOUT_HALIGN_CENTER,
       :locY => Ui.LAYOUT_VALIGN_CENTER,
       :color => _bSelected ? Gfx.COLOR_WHITE : Gfx.COLOR_DK_GRAY
     };
-    if(self.amSettingsKeys != null) {
-      for(var i=0; i<self.amSettingsKeys.size(); i++) {
-        dictSettings[self.amSettingsKeys[i]] = self.amSettingsValues[i];
-      }
+    for(var i=0; i<self.amSettingsKeys.size(); i++) {
+      dictSettings[self.amSettingsKeys[i]] = self.amSettingsValues[i];
     }
     return new Ui.Text(dictSettings);
   }
@@ -76,11 +75,11 @@ class PickerFactoryDictionary extends Ui.PickerFactory {
   // FUNCTIONS: self
   //
 
-  function indexOfKey(_mKey) {
+  function indexOfKey(_mKey as Object?) as Number {
     return self.amKeys.indexOf(_mKey);
   }
 
-  function indexOfValue(_mValue) {
+  function indexOfValue(_mValue as Object?) as Number {
     return self.amValues.indexOf(_mValue);
   }
 

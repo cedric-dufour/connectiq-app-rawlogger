@@ -16,6 +16,7 @@
 // SPDX-License-Identifier: GPL-3.0
 // License-Filename: LICENSE/GPL-3.0.txt
 
+import Toybox.Lang;
 using Toybox.Application as App;
 
 //
@@ -30,74 +31,74 @@ class RL_Settings {
 
   // Inputs
   // ... system
-  public var bSystemBattery;
-  public var bSystemMemory;
+  public var bSystemBattery as Boolean = false;
+  public var bSystemMemory as Boolean = false;
   // ... position
-  public var bPositionLocation;
-  public var bPositionAltitude;
-  public var bPositionSpeed;
-  public var bPositionHeading;
-  public var bPositionAccuracy;
+  public var bPositionLocation as Boolean = false;
+  public var bPositionAltitude as Boolean = false;
+  public var bPositionSpeed as Boolean = false;
+  public var bPositionHeading as Boolean = false;
+  public var bPositionAccuracy as Boolean = false;
   // ... sensor
-  public var bSensorAltitude;
-  public var bSensorSpeed;
-  public var bSensorHeading;
-  public var bSensorPressure;
-  public var bSensorAcceleration;
-  public var bSensorAcceleration_HD;
-  public var bSensorMagnetometer;
-  public var bSensorHeartrate;
-  public var bSensorCadence;
-  public var bSensorPower;
-  public var bSensorTemperature;
+  public var bSensorAltitude as Boolean = false;
+  public var bSensorSpeed as Boolean = false;
+  public var bSensorHeading as Boolean = false;
+  public var bSensorPressure as Boolean = false;
+  public var bSensorAcceleration as Boolean = false;
+  public var bSensorAcceleration_HD as Boolean = false;
+  public var bSensorMagnetometer as Boolean = false;
+  public var bSensorHeartrate as Boolean = false;
+  public var bSensorCadence as Boolean = false;
+  public var bSensorPower as Boolean = false;
+  public var bSensorTemperature as Boolean = false;
   // ... activity
-  public var bActivityLocation;
-  public var bActivityAltitude;
-  public var bActivitySpeed;
-  public var bActivityHeading;
-  public var bActivityAccuracy;
-  public var bActivityPressure;
-  public var bActivityHeartrate;
-  public var bActivityCadence;
-  public var bActivityPower;
+  public var bActivityLocation as Boolean = false;
+  public var bActivityAltitude as Boolean = false;
+  public var bActivitySpeed as Boolean = false;
+  public var bActivityHeading as Boolean = false;
+  public var bActivityAccuracy as Boolean = false;
+  public var bActivityPressure as Boolean = false;
+  public var bActivityHeartrate as Boolean = false;
+  public var bActivityCadence as Boolean = false;
+  public var bActivityPower as Boolean = false;
 
-  
+
   //
   // FUNCTIONS: self
   //
 
-  function load() {
+  function load() as Void {
     // Inputs
     // ... system
-    self.bSystemBattery = App.Properties.getValue("userSystemBattery");
-    self.bSystemMemory = App.Properties.getValue("userSystemMemory");
+    self.bSystemBattery = App.Properties.getValue("userSystemBattery") as Boolean;
+    self.bSystemMemory = App.Properties.getValue("userSystemMemory") as Boolean;
     // ... position
-    self.bPositionLocation = App.Properties.getValue("userPositionLocation");
-    self.bPositionAltitude = App.Properties.getValue("userPositionAltitude");
-    self.bPositionSpeed = App.Properties.getValue("userPositionSpeed");
-    self.bPositionHeading = App.Properties.getValue("userPositionHeading");
-    self.bPositionAccuracy = App.Properties.getValue("userPositionAccuracy");
+    self.bPositionLocation = App.Properties.getValue("userPositionLocation") as Boolean;
+    self.bPositionAltitude = App.Properties.getValue("userPositionAltitude") as Boolean;
+    self.bPositionSpeed = App.Properties.getValue("userPositionSpeed") as Boolean;
+    self.bPositionHeading = App.Properties.getValue("userPositionHeading") as Boolean;
+    self.bPositionAccuracy = App.Properties.getValue("userPositionAccuracy") as Boolean;
     // ... sensor
-    self.bSensorAltitude = App.Properties.getValue("userSensorAltitude");
-    self.bSensorSpeed = App.Properties.getValue("userSensorSpeed");
-    self.bSensorHeading = App.Properties.getValue("userSensorHeading");
-    self.bSensorPressure = App.Properties.getValue("userSensorPressure");
-    self.bSensorAcceleration = App.Properties.getValue("userSensorAcceleration");
-    self.bSensorAcceleration_HD = App.Properties.getValue("userSensorAcceleration_HD");
-    self.bSensorMagnetometer = App.Properties.getValue("userSensorMagnetometer");
-    self.bSensorHeartrate = App.Properties.getValue("userSensorHeartrate");
-    self.bSensorCadence = App.Properties.getValue("userSensorCadence");
-    self.bSensorPower = App.Properties.getValue("userSensorPower");
-    self.bSensorTemperature = App.Properties.getValue("userSensorTemperature");
+    self.bSensorAltitude = App.Properties.getValue("userSensorAltitude") as Boolean;
+    self.bSensorSpeed = App.Properties.getValue("userSensorSpeed") as Boolean;
+    self.bSensorHeading = App.Properties.getValue("userSensorHeading") as Boolean;
+    self.bSensorPressure = App.Properties.getValue("userSensorPressure") as Boolean;
+    self.bSensorAcceleration = App.Properties.getValue("userSensorAcceleration") as Boolean;
+    self.bSensorAcceleration_HD = App.Properties.getValue("userSensorAcceleration_HD") as Boolean;
+    self.bSensorMagnetometer = App.Properties.getValue("userSensorMagnetometer") as Boolean;
+    self.bSensorHeartrate = App.Properties.getValue("userSensorHeartrate") as Boolean;
+    self.bSensorCadence = App.Properties.getValue("userSensorCadence") as Boolean;
+    self.bSensorPower = App.Properties.getValue("userSensorPower") as Boolean;
+    self.bSensorTemperature = App.Properties.getValue("userSensorTemperature") as Boolean;
     // ... activity
-    self.bActivityLocation = App.Properties.getValue("userActivityLocation");
-    self.bActivityAltitude = App.Properties.getValue("userActivityAltitude");
-    self.bActivitySpeed = App.Properties.getValue("userActivitySpeed");
-    self.bActivityHeading = App.Properties.getValue("userActivityHeading");
-    self.bActivityAccuracy = App.Properties.getValue("userActivityAccuracy");
-    self.bActivityPressure = App.Properties.getValue("userActivityPressure");
-    self.bActivityHeartrate = App.Properties.getValue("userActivityHeartrate");
-    self.bActivityCadence = App.Properties.getValue("userActivityCadence");
-    self.bActivityPower = App.Properties.getValue("userActivityPower");
+    self.bActivityLocation = App.Properties.getValue("userActivityLocation") as Boolean;
+    self.bActivityAltitude = App.Properties.getValue("userActivityAltitude") as Boolean;
+    self.bActivitySpeed = App.Properties.getValue("userActivitySpeed") as Boolean;
+    self.bActivityHeading = App.Properties.getValue("userActivityHeading") as Boolean;
+    self.bActivityAccuracy = App.Properties.getValue("userActivityAccuracy") as Boolean;
+    self.bActivityPressure = App.Properties.getValue("userActivityPressure") as Boolean;
+    self.bActivityHeartrate = App.Properties.getValue("userActivityHeartrate") as Boolean;
+    self.bActivityCadence = App.Properties.getValue("userActivityCadence") as Boolean;
+    self.bActivityPower = App.Properties.getValue("userActivityPower") as Boolean;
   }
 }
