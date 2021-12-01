@@ -1,13 +1,13 @@
 <!-- -*- mode:xml; tab-width:2; c-basic-offset:2; intent-tabs-mode:nil; -*- ex: set tabstop=2 expandtab: -->
 <strings>
   <string id="AppName">RawLogger</string>
-  <string id="AppVersion">1.0.20190520a</string>
+  <string id="AppVersion">1.0.20211201a</string>
 
   <!-- About -->
   <string id="titleVersion">Version</string>
   <string id="titleLicense">License</string>
   <string id="titleAuthor">Author</string>
-  
+
   <!-- Menu (settings) -->
   <string id="menuSettings">Settings</string>
   <string id="menuSettingsAbout">About</string>
