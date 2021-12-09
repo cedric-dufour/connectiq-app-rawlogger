@@ -26,7 +26,7 @@ using Toybox.System as Sys;
 // CLASS
 //
 
-class RL_Data {
+class MyData {
 
   //
   // VARIABLES

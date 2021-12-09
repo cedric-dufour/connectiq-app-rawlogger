@@ -63,7 +63,7 @@ class PickerDelegateGenericOnOff extends Ui.PickerDelegate {
   function onAccept(_amValues as Array<App.PropertyValueType>) {
     // Set property and exit
     App.Properties.setValue(self.sPropertyId, _amValues[0]);
-    $.RL_oSettings.load();
+    $.oMySettings.load();
     Ui.popView(Ui.SLIDE_IMMEDIATE);
     return true;
   }

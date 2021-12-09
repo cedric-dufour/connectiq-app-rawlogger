@@ -23,7 +23,7 @@ using Toybox.Application as App;
 // CLASS
 //
 
-class RL_Settings {
+class MySettings {
 
   //
   // VARIABLES
