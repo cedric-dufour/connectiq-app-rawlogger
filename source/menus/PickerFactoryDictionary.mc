@@ -40,8 +40,8 @@ class PickerFactoryDictionary extends Ui.PickerFactory {
     self.amKeys = _amKeys;
     self.amValues = _amValues;
     if(_dictSettings != null) {
-      self.amSettingsKeys = (_dictSettings as Dictionary).keys();
-      self.amSettingsValues = (_dictSettings as Dictionary).values();
+      self.amSettingsKeys = _dictSettings.keys();
+      self.amSettingsValues = _dictSettings.values();
     }
     else {
       self.amSettingsKeys = [];

@@ -38,52 +38,52 @@ var oMySettings as MySettings = new MySettings();
 var oMyData as MyData = new MyData();
 
 // Activity session (recording)
-var oMyActivitySession as ActivityRecording.Session? = null;
+var oMyActivitySession as ActivityRecording.Session?;
 // ... system inputs
-var oMyFitField_SystemBattery as Fit.Field? = null;
-var oMyFitField_SystemMemoryUsed as Fit.Field? = null;
-var oMyFitField_SystemMemoryFree as Fit.Field? = null;
+var oMyFitField_SystemBattery as Fit.Field?;
+var oMyFitField_SystemMemoryUsed as Fit.Field?;
+var oMyFitField_SystemMemoryFree as Fit.Field?;
 // ... position inputs
-var oMyFitField_PositionLatitude as Fit.Field? = null;
-var oMyFitField_PositionLongitude as Fit.Field? = null;
-var oMyFitField_PositionAltitude as Fit.Field? = null;
-var oMyFitField_PositionSpeed as Fit.Field? = null;
-var oMyFitField_PositionHeading as Fit.Field? = null;
-var oMyFitField_PositionAccuracy as Fit.Field? = null;
+var oMyFitField_PositionLatitude as Fit.Field?;
+var oMyFitField_PositionLongitude as Fit.Field?;
+var oMyFitField_PositionAltitude as Fit.Field?;
+var oMyFitField_PositionSpeed as Fit.Field?;
+var oMyFitField_PositionHeading as Fit.Field?;
+var oMyFitField_PositionAccuracy as Fit.Field?;
 // ... sensor inputs
-var oMyFitField_SensorAltitude as Fit.Field? = null;
-var oMyFitField_SensorSpeed as Fit.Field? = null;
-var oMyFitField_SensorHeading as Fit.Field? = null;
-var oMyFitField_SensorPressure as Fit.Field? = null;
-var oMyFitField_SensorAccelerationX as Fit.Field? = null;
-var oMyFitField_SensorAccelerationY as Fit.Field? = null;
-var oMyFitField_SensorAccelerationZ as Fit.Field? = null;
-var oMyFitField_SensorAccelerationX_HD as Fit.Field? = null;
-var oMyFitField_SensorAccelerationY_HD as Fit.Field? = null;
-var oMyFitField_SensorAccelerationZ_HD as Fit.Field? = null;
-var oMyFitField_SensorMagnetometerX as Fit.Field? = null;
-var oMyFitField_SensorMagnetometerY as Fit.Field? = null;
-var oMyFitField_SensorMagnetometerZ as Fit.Field? = null;
-var oMyFitField_SensorHeartrate as Fit.Field? = null;
-var oMyFitField_SensorCadence as Fit.Field? = null;
-var oMyFitField_SensorPower as Fit.Field? = null;
-var oMyFitField_SensorTemperature as Fit.Field? = null;
+var oMyFitField_SensorAltitude as Fit.Field?;
+var oMyFitField_SensorSpeed as Fit.Field?;
+var oMyFitField_SensorHeading as Fit.Field?;
+var oMyFitField_SensorPressure as Fit.Field?;
+var oMyFitField_SensorAccelerationX as Fit.Field?;
+var oMyFitField_SensorAccelerationY as Fit.Field?;
+var oMyFitField_SensorAccelerationZ as Fit.Field?;
+var oMyFitField_SensorAccelerationX_HD as Fit.Field?;
+var oMyFitField_SensorAccelerationY_HD as Fit.Field?;
+var oMyFitField_SensorAccelerationZ_HD as Fit.Field?;
+var oMyFitField_SensorMagnetometerX as Fit.Field?;
+var oMyFitField_SensorMagnetometerY as Fit.Field?;
+var oMyFitField_SensorMagnetometerZ as Fit.Field?;
+var oMyFitField_SensorHeartrate as Fit.Field?;
+var oMyFitField_SensorCadence as Fit.Field?;
+var oMyFitField_SensorPower as Fit.Field?;
+var oMyFitField_SensorTemperature as Fit.Field?;
 // ... activity inputs
-var oMyFitField_ActivityLatitude as Fit.Field? = null;
-var oMyFitField_ActivityLongitude as Fit.Field? = null;
-var oMyFitField_ActivityAltitude as Fit.Field? = null;
-var oMyFitField_ActivitySpeed as Fit.Field? = null;
-var oMyFitField_ActivityHeading as Fit.Field? = null;
-var oMyFitField_ActivityAccuracy as Fit.Field? = null;
-var oMyFitField_ActivityPressureRaw as Fit.Field? = null;
-var oMyFitField_ActivityPressureAmbient as Fit.Field? = null;
-var oMyFitField_ActivityPressureMean as Fit.Field? = null;
-var oMyFitField_ActivityHeartrate as Fit.Field? = null;
-var oMyFitField_ActivityCadence as Fit.Field? = null;
-var oMyFitField_ActivityPower as Fit.Field? = null;
+var oMyFitField_ActivityLatitude as Fit.Field?;
+var oMyFitField_ActivityLongitude as Fit.Field?;
+var oMyFitField_ActivityAltitude as Fit.Field?;
+var oMyFitField_ActivitySpeed as Fit.Field?;
+var oMyFitField_ActivityHeading as Fit.Field?;
+var oMyFitField_ActivityAccuracy as Fit.Field?;
+var oMyFitField_ActivityPressureRaw as Fit.Field?;
+var oMyFitField_ActivityPressureAmbient as Fit.Field?;
+var oMyFitField_ActivityPressureMean as Fit.Field?;
+var oMyFitField_ActivityHeartrate as Fit.Field?;
+var oMyFitField_ActivityCadence as Fit.Field?;
+var oMyFitField_ActivityPower as Fit.Field?;
 
 // Current view
-var oMyView as Ui.View? = null;
+var oMyView as MyView?;
 
 
 //

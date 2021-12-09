@@ -35,39 +35,57 @@ class MenuDelegateSettingsActivity extends Ui.MenuInputDelegate {
   function onMenuItem(item) {
     if (item == :menuSettingsLocation) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsLocation)");
-      Ui.pushView(new PickerGenericOnOff("userActivityLocation", Ui.loadResource(Rez.Strings.labelLocation) as String), new PickerDelegateGenericOnOff("userActivityLocation"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userActivityLocation", Ui.loadResource(Rez.Strings.labelLocation) as String),
+                  new PickerDelegateGenericOnOff("userActivityLocation"),
+                  Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsAltitude) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsAltitude)");
-      Ui.pushView(new PickerGenericOnOff("userActivityAltitude", Ui.loadResource(Rez.Strings.labelAltitude) as String), new PickerDelegateGenericOnOff("userActivityAltitude"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userActivityAltitude", Ui.loadResource(Rez.Strings.labelAltitude) as String),
+                  new PickerDelegateGenericOnOff("userActivityAltitude"),
+                  Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsSpeed) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsSpeed)");
-      Ui.pushView(new PickerGenericOnOff("userActivitySpeed", Ui.loadResource(Rez.Strings.labelSpeed) as String), new PickerDelegateGenericOnOff("userActivitySpeed"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userActivitySpeed", Ui.loadResource(Rez.Strings.labelSpeed) as String),
+                  new PickerDelegateGenericOnOff("userActivitySpeed"),
+                  Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsHeading) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsHeading)");
-      Ui.pushView(new PickerGenericOnOff("userActivityHeading", Ui.loadResource(Rez.Strings.labelHeading) as String), new PickerDelegateGenericOnOff("userActivityHeading"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userActivityHeading", Ui.loadResource(Rez.Strings.labelHeading) as String),
+                  new PickerDelegateGenericOnOff("userActivityHeading"),
+                  Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsAccuracy) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsAccuracy)");
-      Ui.pushView(new PickerGenericOnOff("userActivityAccuracy", Ui.loadResource(Rez.Strings.labelAccuracy) as String), new PickerDelegateGenericOnOff("userActivityAccuracy"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userActivityAccuracy", Ui.loadResource(Rez.Strings.labelAccuracy) as String),
+                  new PickerDelegateGenericOnOff("userActivityAccuracy"),
+                  Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsPressure) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsPressure)");
-      Ui.pushView(new PickerGenericOnOff("userActivityPressure", Ui.loadResource(Rez.Strings.labelPressure) as String), new PickerDelegateGenericOnOff("userActivityPressure"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userActivityPressure", Ui.loadResource(Rez.Strings.labelPressure) as String),
+                  new PickerDelegateGenericOnOff("userActivityPressure"),
+                  Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsHeartrate) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsHeartrate)");
-      Ui.pushView(new PickerGenericOnOff("userActivityHeartrate", Ui.loadResource(Rez.Strings.labelHeartrate) as String), new PickerDelegateGenericOnOff("userActivityHeartrate"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userActivityHeartrate", Ui.loadResource(Rez.Strings.labelHeartrate) as String),
+                  new PickerDelegateGenericOnOff("userActivityHeartrate"),
+                  Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsCadence) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsCadence)");
-      Ui.pushView(new PickerGenericOnOff("userActivityCadence", Ui.loadResource(Rez.Strings.labelCadence) as String), new PickerDelegateGenericOnOff("userActivityCadence"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userActivityCadence", Ui.loadResource(Rez.Strings.labelCadence) as String),
+                  new PickerDelegateGenericOnOff("userActivityCadence"),
+                  Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsPower) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsPower)");
-      Ui.pushView(new PickerGenericOnOff("userActivityPower", Ui.loadResource(Rez.Strings.labelPower) as String), new PickerDelegateGenericOnOff("userActivityPower"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userActivityPower", Ui.loadResource(Rez.Strings.labelPower) as String),
+                  new PickerDelegateGenericOnOff("userActivityPower"),
+                  Ui.SLIDE_IMMEDIATE);
     }
   }
 

@@ -76,10 +76,6 @@ class MyView extends Ui.View {
 
   function initialize() {
     View.initialize();
-
-    // Display mode
-    // ... internal
-    self.bShow = false;
   }
 
   function onLayout(_oDC) {
@@ -144,14 +140,14 @@ class MyView extends Ui.View {
       // ... label
       _oDC.setColor(Gfx.COLOR_BLUE, Gfx.COLOR_TRANSPARENT);
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelTime), Ui.loadResource(Rez.Strings.unitTime)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelTime), Ui.loadResource(Rez.Strings.unitTime)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, self.NOVALUE_BLANK, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       // ... value(s)
       _oDC.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
       var oTimeInfo = Gregorian.info(Time.now(), Time.FORMAT_SHORT);
-      sValue = Lang.format("$1$:$2$", [oTimeInfo.hour.format("%02d"), oTimeInfo.min.format("%02d")]);
+      sValue = format("$1$:$2$", [oTimeInfo.hour.format("%02d"), oTimeInfo.min.format("%02d")]);
       _oDC.drawText(self.iCenterX, self.iValue1Y, Gfx.FONT_SMALL, sValue, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
     }
 
@@ -162,7 +158,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelSystem) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelBattery), Ui.loadResource(Rez.Strings.unitSystemBattery)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelBattery), Ui.loadResource(Rez.Strings.unitSystemBattery)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -178,7 +174,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelSystem) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelMemory), Ui.loadResource(Rez.Strings.unitSystemMemory)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelMemory), Ui.loadResource(Rez.Strings.unitSystemMemory)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -197,7 +193,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelPosition) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelLocation), Ui.loadResource(Rez.Strings.unitPositionLocation)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelLocation), Ui.loadResource(Rez.Strings.unitPositionLocation)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -215,7 +211,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelPosition) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelAltitude), Ui.loadResource(Rez.Strings.unitPositionAltitude)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelAltitude), Ui.loadResource(Rez.Strings.unitPositionAltitude)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -231,7 +227,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelPosition) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelSpeed), Ui.loadResource(Rez.Strings.unitPositionSpeed)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelSpeed), Ui.loadResource(Rez.Strings.unitPositionSpeed)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -247,7 +243,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelPosition) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelHeading), Ui.loadResource(Rez.Strings.unitPositionHeading)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelHeading), Ui.loadResource(Rez.Strings.unitPositionHeading)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -263,7 +259,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelPosition) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelAccuracy), Ui.loadResource(Rez.Strings.unitPositionAccuracy)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelAccuracy), Ui.loadResource(Rez.Strings.unitPositionAccuracy)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -280,7 +276,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelSensor) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelAltitude), Ui.loadResource(Rez.Strings.unitSensorAltitude)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelAltitude), Ui.loadResource(Rez.Strings.unitSensorAltitude)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -296,7 +292,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelSensor) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelSpeed), Ui.loadResource(Rez.Strings.unitSensorSpeed)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelSpeed), Ui.loadResource(Rez.Strings.unitSensorSpeed)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -312,7 +308,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelSensor) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelHeading), Ui.loadResource(Rez.Strings.unitSensorHeading)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelHeading), Ui.loadResource(Rez.Strings.unitSensorHeading)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -328,7 +324,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelSensor) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelPressure), Ui.loadResource(Rez.Strings.unitSensorPressure)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelPressure), Ui.loadResource(Rez.Strings.unitSensorPressure)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -344,7 +340,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelSensor) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelAcceleration), Ui.loadResource(Rez.Strings.unitSensorAcceleration)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelAcceleration), Ui.loadResource(Rez.Strings.unitSensorAcceleration)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -364,7 +360,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelSensor) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelAcceleration_HD), Ui.loadResource(Rez.Strings.unitSensorAcceleration)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelAcceleration_HD), Ui.loadResource(Rez.Strings.unitSensorAcceleration)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -384,7 +380,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelSensor) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelMagnetometer), Ui.loadResource(Rez.Strings.unitSensorMagnetometer)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelMagnetometer), Ui.loadResource(Rez.Strings.unitSensorMagnetometer)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -404,7 +400,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelSensor) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelHeartrate), Ui.loadResource(Rez.Strings.unitSensorHeartrate)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelHeartrate), Ui.loadResource(Rez.Strings.unitSensorHeartrate)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -420,7 +416,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelSensor) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelCadence), Ui.loadResource(Rez.Strings.unitSensorCadence)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelCadence), Ui.loadResource(Rez.Strings.unitSensorCadence)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -436,7 +432,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelSensor) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelPower), Ui.loadResource(Rez.Strings.unitSensorPower)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelPower), Ui.loadResource(Rez.Strings.unitSensorPower)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -452,7 +448,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelSensor) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelTemperature), Ui.loadResource(Rez.Strings.unitSensorTemperature)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelTemperature), Ui.loadResource(Rez.Strings.unitSensorTemperature)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -469,7 +465,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelActivity) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelLocation), Ui.loadResource(Rez.Strings.unitActivityLocation)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelLocation), Ui.loadResource(Rez.Strings.unitActivityLocation)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -487,7 +483,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelActivity) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelAltitude), Ui.loadResource(Rez.Strings.unitActivityAltitude)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelAltitude), Ui.loadResource(Rez.Strings.unitActivityAltitude)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -503,7 +499,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelActivity) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelSpeed), Ui.loadResource(Rez.Strings.unitActivitySpeed)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelSpeed), Ui.loadResource(Rez.Strings.unitActivitySpeed)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -519,7 +515,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelActivity) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelHeading), Ui.loadResource(Rez.Strings.unitActivityHeading)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelHeading), Ui.loadResource(Rez.Strings.unitActivityHeading)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -535,7 +531,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelActivity) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelAccuracy), Ui.loadResource(Rez.Strings.unitActivityAccuracy)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelAccuracy), Ui.loadResource(Rez.Strings.unitActivityAccuracy)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -551,7 +547,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelActivity) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelPressure), Ui.loadResource(Rez.Strings.unitActivityPressure)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelPressure), Ui.loadResource(Rez.Strings.unitActivityPressure)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -571,7 +567,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelActivity) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelHeartrate), Ui.loadResource(Rez.Strings.unitActivityHeartrate)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelHeartrate), Ui.loadResource(Rez.Strings.unitActivityHeartrate)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -587,7 +583,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelActivity) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelCadence), Ui.loadResource(Rez.Strings.unitActivityCadence)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelCadence), Ui.loadResource(Rez.Strings.unitActivityCadence)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
@@ -603,7 +599,7 @@ class MyView extends Ui.View {
         $.sMyViewLabel1 = Ui.loadResource(Rez.Strings.labelActivity) as String;
       }
       if($.sMyViewLabel2 == null) {
-        $.sMyViewLabel2 = Lang.format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelPower), Ui.loadResource(Rez.Strings.unitActivityPower)]);
+        $.sMyViewLabel2 = format("$1$ [$2$]", [Ui.loadResource(Rez.Strings.labelPower), Ui.loadResource(Rez.Strings.unitActivityPower)]);
       }
       _oDC.drawText(self.iCenterX, self.iLabel1Y, Gfx.FONT_SMALL, $.sMyViewLabel1 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);
       _oDC.drawText(self.iCenterX, self.iLabel2Y, Gfx.FONT_SMALL, $.sMyViewLabel2 as String, Gfx.TEXT_JUSTIFY_CENTER|Gfx.TEXT_JUSTIFY_VCENTER);

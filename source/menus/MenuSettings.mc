@@ -34,23 +34,33 @@ class MenuDelegateSettings extends Ui.MenuInputDelegate {
   function onMenuItem(item) {
     if (item == :menuSettingsSystem) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsSystem)");
-      Ui.pushView(new Rez.Menus.menuSettingsSystem(), new MenuDelegateSettingsSystem(), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new Rez.Menus.menuSettingsSystem(),
+                  new MenuDelegateSettingsSystem(),
+                  Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsPosition) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsPosition)");
-      Ui.pushView(new Rez.Menus.menuSettingsPosition(), new MenuDelegateSettingsPosition(), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new Rez.Menus.menuSettingsPosition(),
+                  new MenuDelegateSettingsPosition(),
+                  Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsSensor) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsSensor)");
-      Ui.pushView(new Rez.Menus.menuSettingsSensor(), new MenuDelegateSettingsSensor(), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new Rez.Menus.menuSettingsSensor(),
+                  new MenuDelegateSettingsSensor(),
+                  Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsActivity) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsActivity)");
-      Ui.pushView(new Rez.Menus.menuSettingsActivity(), new MenuDelegateSettingsActivity(), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new Rez.Menus.menuSettingsActivity(),
+                  new MenuDelegateSettingsActivity(),
+                  Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsAbout) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsAbout)");
-      Ui.pushView(new MenuSettingsAbout(), new MenuDelegateSettingsAbout(), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new MenuSettingsAbout(),
+                  new MenuDelegateSettingsAbout(),
+                  Ui.SLIDE_IMMEDIATE);
     }
   }
 

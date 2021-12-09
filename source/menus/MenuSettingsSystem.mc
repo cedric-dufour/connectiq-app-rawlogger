@@ -35,11 +35,15 @@ class MenuDelegateSettingsSystem extends Ui.MenuInputDelegate {
   function onMenuItem(item) {
     if (item == :menuSettingsBattery) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsBattery)");
-      Ui.pushView(new PickerGenericOnOff("userSystemBattery", Ui.loadResource(Rez.Strings.labelBattery) as String), new PickerDelegateGenericOnOff("userSystemBattery"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userSystemBattery", Ui.loadResource(Rez.Strings.labelBattery) as String),
+                  new PickerDelegateGenericOnOff("userSystemBattery"),
+                  Ui.SLIDE_IMMEDIATE);
     }
     else if (item == :menuSettingsMemory) {
       //Sys.println("DEBUG: MenuDelegateSettings.onMenuItem(:menuSettingsMemory)");
-      Ui.pushView(new PickerGenericOnOff("userSystemMemory", Ui.loadResource(Rez.Strings.labelMemory) as String), new PickerDelegateGenericOnOff("userSystemMemory"), Ui.SLIDE_IMMEDIATE);
+      Ui.pushView(new PickerGenericOnOff("userSystemMemory", Ui.loadResource(Rez.Strings.labelMemory) as String),
+                  new PickerDelegateGenericOnOff("userSystemMemory"),
+                  Ui.SLIDE_IMMEDIATE);
     }
   }
 
