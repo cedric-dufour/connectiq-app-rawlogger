@@ -1,5 +1,10 @@
 RawLogger (Garmin ConnectIQ) App
 ================================
+
+> THIS PROJECT HAS MOVED TO https://codeberg.org/cedric-dufour/connectiq-app-rawlogger
+>
+> (and may vanish from GitHub with no further notice; please update your upstream URL)
+
 ConnectIQ raw data logger (for development/troubleshooting purposes)
 
 RawLogger is as simple as it gets:
